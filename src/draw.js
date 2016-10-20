@@ -1,8 +1,8 @@
 //Create Table
 
 var tableData = [];
-var rowQuant = 2;
-var colQuant = 10;
+var rowQuant = 20;
+var colQuant = 20;
 var cellCount = 0;
 
 for (var x = 0; x < rowQuant; x+=1) {
@@ -31,6 +31,20 @@ var ColorBox = function(props) {
     return <div className='outerBox' onClick={props.changeDrawColor}><div className='innerBox' style={divStyle}></div></div>;
 }
 
+var TableRow = function(props) {
+    return (<tr>
+                {props.cellData.map(function(item) {
+                  
+                  return <TableCell key={item.id} styles={{backgroundColor: item.color}} clickFunc={function() {props.trClickFunc(item)}}/>
+                })}
+            </tr>
+           );
+}
+
+var TableCell = function(props) {
+    return <td className='box' style={props.styles} onClick={props.clickFunc}></td>;
+}
+
 //var DrawingCell = function(props) {
 //    var divStyle = {backgroundColor: props.style};
 //    return <td className='box' style={divStyle} onClick={props.changeColor}></td>;
@@ -44,7 +58,9 @@ var Application = React.createClass({
         };
     },
     changeBoxColor: function(val) {
-        
+        val.color = this.state.currentColor;
+        this.setState(this.state);
+        console.log(val);
     },
     changeColorChoice: function(val) {
         console.log(val);
@@ -62,6 +78,11 @@ var Application = React.createClass({
                 <div className = 'boxContainer'>
                     <table>
                         <tbody>
+                            {this.state.drawingTable.map(function(item, index) {
+                                return (        
+                                    <TableRow key={index} cellData={item} trClickFunc= {this.changeBoxColor}/>
+                                    )}.bind(this))}
+                                    
                         </tbody>
                     </table>
                 </div>
