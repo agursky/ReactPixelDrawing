@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+body {
+    background-color: #e6e6e6;
+}
+
+.boxContainer, .colorContainer {
+    float: left;
+}
+
+.boxContainer {
+    margin: 50px;
+    width: 580px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px #bfbfbf;
+
+}
+
+.box, .outerBox, .innerBox {
+    border: 1px solid #f9f9f9;
+}
+
+.box {
+    width: 28px;
+    height: 28px;
+    border-color: #eaeaea;
+}
+
+.colorContainer {
+    width: 300px;
+    
+}
+
+.outerBox {
+    width: 50px;
+    height: 50px; 
+    display: inline-block;
+    padding: 5px;
+    background-color: white;
+    margin: -2px 0;
+}
+
+.innerBox {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+}
