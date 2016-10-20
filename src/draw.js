@@ -1,21 +1,30 @@
-var boxGrid = [];
-var gridNumber = 20;
-var boxRow = []
+//Create Table
+
+var tableData = [];
+var rowQuant = 2;
+var colQuant = 10;
+var cellCount = 0;
+
+for (var x = 0; x < rowQuant; x+=1) {
+    tableData.push([]);
+    for (var y = 0; y < colQuant; y+=1) {
+        tableData[x].push({color: 'white', id: cellCount});
+        cellCount+=1;
+    }
+}
+
+
+//Create Color Pallette
+
 var colorGrid = [];
 var colorGridChoices = ['red', 'green', 'blue', 'yellow', 'pink', 'purple', 'orange', 'brown', 'gray', 'white', 'black'];
-var cellCount = 0;
+
 
 for (var x = 0; x < colorGridChoices.length; x+=1) {
     colorGrid.push({color: colorGridChoices[x], id: x});
 }
 
-for (var x = 0; x < gridNumber; x+=1) {
-    boxGrid.push(x);
-}
-
-for (var x = 0; x < gridNumber; x+=1) {
-    boxRow.push({id: x});
-}
+//Initialize Components
 
 var ColorBox = function(props) {
     var divStyle = {backgroundColor: props.style};
@@ -27,32 +36,15 @@ var ColorBox = function(props) {
 //    return <td className='box' style={divStyle} onClick={props.changeColor}></td>;
 //}
 
-var DrawingCell = function(props) {
-    return <td className='box'></td>;
-}
-
-var DrawingRow = function(props) {
-    return (
-        <tr>
-            {props.cells.map(function() {
-                cellCount+=1;
-                return (<DrawingCell key={cellCount} />);
-            })}
-        </tr>
-    )
-}
-
 var Application = React.createClass({
     getInitialState: function() {
         return {
-            boxArray: this.props.boxes,
+            drawingTable: this.props.tableData,
             currentColor: 'blue'
         };
     },
     changeBoxColor: function(val) {
-        console.log(val);
-        this.state.boxArray[val].color = this.state.currentColor;
-        this.setState(this.state);
+        
     },
     changeColorChoice: function(val) {
         console.log(val);
@@ -70,9 +62,6 @@ var Application = React.createClass({
                 <div className = 'boxContainer'>
                     <table>
                         <tbody>
-                            {this.props.rows.map(function(item) {
-                                return <DrawingRow key={item.id} cells={this.props.boxes}/>
-                            }.bind(this))}
                         </tbody>
                     </table>
                 </div>
@@ -82,6 +71,6 @@ var Application = React.createClass({
 })
 
 ReactDOM.render(
-  <Application boxes={boxGrid} rows={boxRow} colorArray={colorGrid}/>,
+  <Application tableData={tableData} colorArray={colorGrid}/>,
   document.getElementById('example')
 );
