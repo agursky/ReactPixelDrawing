@@ -115,12 +115,11 @@ var Application = React.createClass({
                 }.bind(this))}
                 </div> 
                 <div className = 'buttonContainer'>
-                    <button type='button' onClick={this.clear}>Clear</button>
-                    <button type='button' onClick={this.addRow}><img src='img/addRow.png' alt='grid picture'/></button>
-                       
-                    <button type='button' onClick={this.addColumn}><img src='img/addCol.png' alt='grid picture'/></button>
-                    <button type='button' onClick={this.removeRow}><img src='img/remRow.png' alt='grid picture'/></button>
-                    <button type='button' onClick={this.removeColumn}><img src='img/remCol.png' alt='grid picture'/></button> 
+                    <button type='button' onClick={this.removeColumn}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
+                    <button type='button' onClick={this.removeRow}><img src='img/remRow.png' alt='Remove Row Button'/></button>
+                    <button type='button' onClick={this.addColumn}><img src='img/addCol.png' alt='Add Column Button'/></button>
+                    <button type='button' onClick={this.addRow}><img src='img/addRow.png' alt='Add Row Button'/></button>
+                    <button type='button' onClick={this.clear}><img src='img/clear.png' alt='Clear Button'/></button>
                 </div>
                 <div className = 'boxContainer'>
                     <table>
