@@ -17,7 +17,7 @@ for (var x = 0; x < rowQuant; x+=1) {
 //Create Color Pallette
 
 var colorGrid = [];
-var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff675b', '#f44336', '#ff9800', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0', '#ffb0be'];
+var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffe9c9', '#ffd69a', '#ffc56f', '#ffaa2d', '#ff9800', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0', '#ffb0be'];
 
 
 for (var x = 0; x < colorGridChoices.length; x+=1) {
