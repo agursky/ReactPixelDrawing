@@ -6,12 +6,12 @@
 
 
 body {
-    background-color: #e6e6e6;
+    background-color: #ddf0ff;
     
 }
 
 .boxContainer, .colorContainer, .buttonContainer {
-    box-shadow: 0 0 10px 2px #bfbfbf;
+    box-shadow: 0 0 10px 2px #cfeef7;
 }
 
 
@@ -36,7 +36,7 @@ body {
 
 .buttonContainer {
     position: fixed;
-    background-color: white; 
+    background-color: #54b8ff; 
     padding: 10px;
     width: 100%;
     bottom: 0;
@@ -63,7 +63,7 @@ body {
     transition: 0.4s;
     float: right;
 /*    height: 30px;*/
-    border: 1px solid white;
+    border-bottom: 1px solid #54b8ff;
 }
 
 button img {
@@ -72,7 +72,7 @@ button img {
 }
 
 .buttonContainer button:hover {
-    border-bottom: 1px solid #56beff !important;
+    border-bottom: 1px solid white !important;
 }
 
 .colorContainer {
