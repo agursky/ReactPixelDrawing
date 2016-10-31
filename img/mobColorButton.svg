@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="65.136894mm"
+   height="65.136894mm"
+   viewBox="0 0 230.80001 230.80002"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="mobColorButton.svg"
+   inkscape:export-filename="/Users/project/Dropbox/Coding/01_Projects/11_React_Drawing/img/mobColor.png"
+   inkscape:export-xdpi="91.247498"
+   inkscape:export-ydpi="91.247498"
+   enable-background="new">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="131.41471"
+     inkscape:cy="-28.2281"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1405"
+     inkscape:window-height="855"
+     inkscape:window-x="30"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     showborder="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(135.40001,149.40004)">
+    <circle
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#757575;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stroke-linejoin:round"
+       id="path4779"
+       cx="-20.000002"
+       cy="-34.000019"
+       r="115.00002"
+       inkscape:export-xdpi="91.247498"
+       inkscape:export-ydpi="91.247498" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-151.08574,-269.19075)">
+    <g
+       id="g4858"
+       transform="translate(6.1063354,-4.1686261)">
+      <circle
+         r="15"
+         inkscape:export-ydpi="91.247498"
+         inkscape:export-xdpi="91.247498"
+         cy="318.88147"
+         cx="262.64038"
+         id="path4785"
+         style="opacity:1;fill:#f73434;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         r="15"
+         style="opacity:1;fill:#f7cf34;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse4787"
+         cx="312.78723"
+         cy="341.90829" />
+      <circle
+         r="15"
+         cy="387.38345"
+         cx="329.31302"
+         id="ellipse4789"
+         style="opacity:1;fill:#34f73b;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         r="15"
+         cy="434.99075"
+         cx="312.78723"
+         id="ellipse4793"
+         style="opacity:1;fill:#345cf7;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         r="15"
+         transform="matrix(-0.6380819,0.7699685,0.7699685,0.6380819,0,0)"
+         style="opacity:1;fill:#d734f7;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse4795"
+         cx="176.11496"
+         cy="394.5896"
+         inkscape:export-xdpi="91.247498"
+         inkscape:export-ydpi="91.247498" />
+      <circle
+         r="15"
+         transform="matrix(-0.6380819,0.7699685,0.7699685,0.6380819,0,0)"
+         style="opacity:1;fill:#a66607;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse4799"
+         cx="185.55017"
+         cy="494.87302" />
+      <circle
+         inkscape:export-ydpi="91.247498"
+         inkscape:export-xdpi="91.247498"
+         cy="380.97202"
+         cx="128.33897"
+         id="circle4803"
+         style="opacity:1;fill:#fa839f;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="matrix(-0.6380819,0.7699685,0.7699685,0.6380819,0,0)"
+         r="15" />
+    </g>
+  </g>
+</svg>

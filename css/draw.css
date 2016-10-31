@@ -54,21 +54,28 @@ body {
 }
 */
 
-.buttonContainer button {
+
+
+button {
     border: none;
     background-color: transparent;
     margin: 4px;
     padding: 0;
     outline: none;
     transition: 0.4s;
-    float: right;
-/*    height: 30px;*/
+    float: right;    
+    
+}
+
+.buttonContainer button {
     border-bottom: 1px solid #54b8ff;
+    width: 30px;
+    height: 30px;
 }
 
 button img {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
 }
 
 .buttonContainer button:hover {
@@ -98,4 +105,16 @@ button img {
 
 .outerBox:first-of-type .innerBox {
     border: 1px solid #eae8e8;
+}
+
+.mobile-button {
+    display: none;
+    position: fixed; 
+    width: 50px;
+    top: 26px;
+    right: 46px;
+}
+
+.mobile-button img {
+    width: 100%;
 }

@@ -17,7 +17,7 @@ for (var x = 0; x < rowQuant; x+=1) {
 //Create Color Pallette
 
 var colorGrid = [];
-var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffe9c9', '#ffd69a', '#ffc56f', '#ffaa2d', '#ff9800', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0', '#ffb0be'];
+var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffe9c9', '#ffd69a', '#ffc56f', '#ffaa2d', '#ff9800', '#fffce3', '#fff7b3', '#fff283', '#ffed53', '#ffe500', '#c6edc7', '#9ce09e', '#71c674', '#4caf50', '#2e9f33', '#bbd7ed', '#90c5ef', '#54abf0', '#2196f3', '#0382e8', '#d3b8d8', '#ba82c4', '#b452c4', '#9c27b0', '#85019b', '#ffd2da', '#ffb0be', '#ff9bad', '#ff7991', '#ff718a'];
 
 
 for (var x = 0; x < colorGridChoices.length; x+=1) {
@@ -29,6 +29,15 @@ for (var x = 0; x < colorGridChoices.length; x+=1) {
 var ColorBox = function(props) {
     var divStyle = {backgroundColor: props.style};
     return <div className='outerBox' onClick={props.changeDrawColor}><div className='innerBox' style={divStyle}></div></div>;
+}
+
+var MobileContainer = function(props) {
+       return (
+        <div className='mobileContainer'>
+                    <button type='button' className='mobile-button'><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
+                </div>
+    )
+    
 }
 
 var TableRow = function(props) {
@@ -44,6 +53,18 @@ var TableRow = function(props) {
 var TableCell = function(props) {
     return <td className='box' style={props.styles} onClick={props.clickFunc}></td>;
 }
+
+var ButtonContainer = function(props) {
+        return(
+            <div className = 'buttonContainer'>
+                    <button type='button' onClick={props.remColFunc}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
+                    <button type='button' onClick={props.remRowFunc}><img src='img/remRow.png' alt='Remove Row Button'/></button>
+                    <button type='button' onClick={props.addColFunc}><img src='img/addCol.png' alt='Add Column Button'/></button>
+                    <button type='button' onClick={props.addRowFunc}><img src='img/addRow.png' alt='Add Row Button'/></button>
+                    <button type='button' onClick={props.clearFunc}><img src='img/clear.png' alt='Clear Button'/></button>
+                </div>
+        )
+    }
 
 var Application = React.createClass({
     getInitialState: function() {
@@ -114,13 +135,7 @@ var Application = React.createClass({
                         return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {this.changeColorChoice(item.color)}.bind(this)}/>
                 }.bind(this))}
                 </div> 
-                <div className = 'buttonContainer'>
-                    <button type='button' onClick={this.removeColumn}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
-                    <button type='button' onClick={this.removeRow}><img src='img/remRow.png' alt='Remove Row Button'/></button>
-                    <button type='button' onClick={this.addColumn}><img src='img/addCol.png' alt='Add Column Button'/></button>
-                    <button type='button' onClick={this.addRow}><img src='img/addRow.png' alt='Add Row Button'/></button>
-                    <button type='button' onClick={this.clear}><img src='img/clear.png' alt='Clear Button'/></button>
-                </div>
+                <ButtonContainer clearFunc={this.clear} addRowFunc={this.addRow} remRowFunc={this.removeRow} addColFunc={this.addColumn} remColFunc={this.removeColumn}/>
                 <div className = 'boxContainer'>
                     <table>
                         <tbody>
@@ -132,10 +147,13 @@ var Application = React.createClass({
                         </tbody>
                     </table>
                 </div>
+                <MobileContainer />
             </div>
         )
     }
 })
+
+
 
 ReactDOM.render(
   <Application tableData={tableData} colorArray={colorGrid}/>,
