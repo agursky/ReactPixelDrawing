@@ -57,11 +57,12 @@ var TableCell = function(props) {
 var ButtonContainer = function(props) {
         return(
             <div className = 'buttonContainer'>
-                    <button type='button' onClick={props.remColFunc}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
-                    <button type='button' onClick={props.remRowFunc}><img src='img/remRow.png' alt='Remove Row Button'/></button>
-                    <button type='button' onClick={props.addColFunc}><img src='img/addCol.png' alt='Add Column Button'/></button>
-                    <button type='button' onClick={props.addRowFunc}><img src='img/addRow.png' alt='Add Row Button'/></button>
-                    <button type='button' onClick={props.clearFunc}><img src='img/clear.png' alt='Clear Button'/></button>
+                    <button type='button' onClick={props.buttonFunc[0]}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
+                    <button type='button' onClick={props.buttonFunc[1]}><img src='img/remRow.png' alt='Remove Row Button'/></button>
+                    <button type='button' onClick={props.buttonFunc[2]}><img src='img/addCol.png' alt='Add Column Button'/></button>
+                    <button type='button' onClick={props.buttonFunc[3]}><img src='img/addRow.png' alt='Add Row Button'/></button>
+                    <button type='button' onClick={props.buttonFunc[4]}><img src='img/clear.png' alt='Clear Button'/></button>
+                    <button type='button' className='button-no-icon' onClick={props.buttonFunc[5]}>Save</button>
                 </div>
         )
     }
@@ -127,6 +128,16 @@ var Application = React.createClass({
 //        cellCount-=rowQuant;
         this.setState(this.state);
     },
+    saveImage: function() {
+        console.log('save image');
+        html2canvas(document.getElementsByClassName('boxContainer'), {
+            onrendered: function(canvas) {
+                canvas.toBlob(function(blob) {
+                saveAs(blob, "Pixel Drawing.png");
+                }
+            );
+        }
+    })},
     render: function(props) {
         return(
             <div>
@@ -135,7 +146,7 @@ var Application = React.createClass({
                         return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {this.changeColorChoice(item.color)}.bind(this)}/>
                 }.bind(this))}
                 </div> 
-                <ButtonContainer clearFunc={this.clear} addRowFunc={this.addRow} remRowFunc={this.removeRow} addColFunc={this.addColumn} remColFunc={this.removeColumn}/>
+                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.clear, this.saveImage]}/>
                 <div className = 'boxContainer'>
                     <table>
                         <tbody>
