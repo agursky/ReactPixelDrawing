@@ -62,7 +62,7 @@ var ButtonContainer = function(props) {
                     <button type='button' onClick={props.buttonFunc[2]}><img src='img/addCol.png' alt='Add Column Button'/></button>
                     <button type='button' onClick={props.buttonFunc[3]}><img src='img/addRow.png' alt='Add Row Button'/></button>
                     <button type='button' onClick={props.buttonFunc[4]}><img src='img/clear.png' alt='Clear Button'/></button>
-                    <button type='button' className='button-no-icon' onClick={props.buttonFunc[5]}>Save</button>
+                    <button type='button' onClick={props.buttonFunc[5]}><img src='img/save.png' alt='Save Button'/></button>
                 </div>
         )
     }
