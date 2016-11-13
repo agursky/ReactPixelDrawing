@@ -54,26 +54,41 @@ var TableCell = function(props) {
     return <td className='box' style={props.styles} onClick={props.clickFunc}></td>;
 }
 
-var ButtonContainer = function(props) {
+var ButtonContainer = React.createClass({
+    getInitialState: function() {
+        return {
+            helperText: 'Helper Span'
+        }
+    },
+    hoverFunc: function(el) {
+        this.state.helperText = el;
+        this.setState(this.state);
+    },
+    render: function(props) {
         return(
             <div className = 'buttonContainer'>
-                    <button type='button' onClick={props.buttonFunc[0]} onMouseOver={function() {props.hoverFunc('Remove Column')}}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
-                    <button type='button' onClick={props.buttonFunc[1]} onMouseOver={function() {props.hoverFunc('Remove Row')}}><img src='img/remRow.png' alt='Remove Row Button'/></button>
-                    <button type='button' onClick={props.buttonFunc[2]} onMouseOver={function() {props.hoverFunc('Add Column')}}><img src='img/addCol.png' alt='Add Column Button'/></button>
-                    <button type='button' onClick={props.buttonFunc[3]} onMouseOver={function() {props.hoverFunc('Add Row')}}><img src='img/addRow.png' alt='Add Row Button'/></button>
-                    <button type='button' onClick={props.buttonFunc[4]} onMouseOver={function() {props.hoverFunc('Start Over')}}><img src='img/clear.png' alt='Clear Button'/></button>
-                    <button type='button' onClick={props.buttonFunc[5]} onMouseOver={function() {props.hoverFunc('Save')}}><img src='img/save.png' alt='Save Button'/></button>
-                    <span className='helper-span'>{props.helperText}</span>
+                    <button type='button' onClick={this.props.buttonFunc[0]} onMouseOver={function() {this.hoverFunc('Remove Column')}.bind(this)}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
+                    <button type='button' onClick={this.props.buttonFunc[1]} onMouseOver={function() {this.hoverFunc('Remove Row')}.bind(this)}><img src='img/remRow.png' alt='Remove Row Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[2]} onMouseOver={function() {this.hoverFunc('Add Column')}.bind(this)}><img src='img/addCol.png' alt='Add Column Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Add Row')}.bind(this)}><img src='img/addRow.png' alt='Add Row Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[4]} onMouseOver={function() {this.hoverFunc('Start Over')}.bind(this)}><img src='img/clear.png' alt='Clear Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[5]} onMouseOver={function() {this.hoverFunc('Save')}.bind(this)}><img src='img/save.png' alt='Save Button'/></button>
+                    <span className='helper-span'>{this.state.helperText}</span>
                 </div>
         )
     }
+});
+    
+    
+    
+    
+    
 
 var Application = React.createClass({
     getInitialState: function() {
         return {
             drawingTable: this.props.tableData,
             currentColor: 'black',
-            helperText: 'Helper Span'
         };
     },
     changeBoxColor: function(val) {
@@ -140,11 +155,6 @@ var Application = React.createClass({
             );
         }
     })},
-    hoverFunc: function(el) {
-        console.log(el);
-        this.state.helperText = el;
-        this.setState(this.state);
-    },
     render: function(props) {
         return(
             <div>
@@ -153,7 +163,7 @@ var Application = React.createClass({
                         return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {this.changeColorChoice(item.color)}.bind(this)}/>
                 }.bind(this))}
                 </div> 
-                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.clear, this.saveImage]} helperText={this.state.helperText} hoverFunc={this.hoverFunc}/>
+                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.clear, this.saveImage]}/>
                 <div className = 'boxContainer'>
                     <table>
                         <tbody>
