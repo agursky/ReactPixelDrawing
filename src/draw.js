@@ -54,6 +54,16 @@ var TableCell = function(props) {
     return <td className='box' style={props.styles} onClick={props.clickFunc}></td>;
 }
 
+var Modal = function(props) {
+    return (
+        <div className='modal-container' style={props.style}>
+            <p>{props.modalMessage}</p>
+            <button className='cancel-button' onClick={props.removeModal}>Cancel</button>
+            <button className='confirm-button' onClick={props.confirmModal}>OK</button>
+        </div>
+    );
+}
+
 var ButtonContainer = React.createClass({
     getInitialState: function() {
         return {
@@ -78,17 +88,15 @@ var ButtonContainer = React.createClass({
         )
     }
 });
-    
-    
-    
-    
-    
+
 
 var Application = React.createClass({
     getInitialState: function() {
         return {
             drawingTable: this.props.tableData,
             currentColor: 'black',
+            modalMessage: 'Are you sure you want to erase EVERYTHING?',
+            modalStyle: {display: 'none'}
         };
     },
     changeBoxColor: function(val) {
@@ -110,7 +118,6 @@ var Application = React.createClass({
         this.setState(this.state);
     },
     addRow: function() {
-        console.log('add row');
         var table = this.state.drawingTable;
         rowQuant+=1;
         table.push([]);
@@ -121,14 +128,12 @@ var Application = React.createClass({
         this.setState(this.state);
     },
     removeRow: function() {
-        console.log('remove row');
         this.state.drawingTable.pop();
         rowQuant-=1;
 //        cellCount-=colQuant;
         this.setState(this.state);
     },
     addColumn: function() {
-        console.log('add Column');
         for (var x = 0; x < rowQuant; x+=1) {
             this.state.drawingTable[x].push({color: 'white', id: cellCount});
             cellCount+=1;
@@ -137,7 +142,6 @@ var Application = React.createClass({
         this.setState(this.state);
     },
     removeColumn: function() {
-        console.log('remove Column');
         for (var x = 0; x < rowQuant; x+=1) {
             this.state.drawingTable[x].pop();
         }
@@ -146,7 +150,6 @@ var Application = React.createClass({
         this.setState(this.state);
     },
     saveImage: function() {
-        console.log('save image');
         html2canvas(document.getElementsByClassName('boxContainer'), {
             onrendered: function(canvas) {
                 canvas.toBlob(function(blob) {
@@ -155,6 +158,19 @@ var Application = React.createClass({
             );
         }
     })},
+    showModal: function() {
+        this.state.modalStyle = {display: 'initial'};
+        this.setState(this.state);
+    },
+    removeModal: function() {
+        this.state.modalStyle = {display: 'none'};
+        this.setState(this.state);
+    },
+    confirmModal: function() {
+        this.clear();
+        this.removeModal();
+        this.setState(this.state);
+    },
     render: function(props) {
         return(
             <div>
@@ -163,7 +179,7 @@ var Application = React.createClass({
                         return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {this.changeColorChoice(item.color)}.bind(this)}/>
                 }.bind(this))}
                 </div> 
-                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.clear, this.saveImage]}/>
+                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage]}/>
                 <div className = 'boxContainer'>
                     <table>
                         <tbody>
@@ -176,6 +192,7 @@ var Application = React.createClass({
                     </table>
                 </div>
                 <MobileContainer />
+                <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
             </div>
         )
     }
@@ -185,5 +202,5 @@ var Application = React.createClass({
 
 ReactDOM.render(
   <Application tableData={tableData} colorArray={colorGrid}/>,
-  document.getElementById('example')
+  document.getElementById('container')
 );

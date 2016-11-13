@@ -60,19 +60,18 @@ body {
 
 button {
     border: none;
-    background-color: transparent;
-    margin: 4px;
-    padding: 0;
     outline: none;
     transition: 0.4s;
-    float: right;    
-    
 }
 
 .buttonContainer button {
     border-bottom: 1px solid #54b8ff;
     width: 30px;
     height: 30px;
+    float: right;    
+    background-color: transparent;
+    margin: 4px;
+    padding: 0;
 }
 
 .button-no-icon {
@@ -141,4 +140,42 @@ button img {
 
 .mobile-button img {
     width: 100%;
+}
+
+.modal-container {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: white;
+    padding: 40px 40px 20px;
+    border: 1px solid #cecece;
+    text-align: center;
+    animation-name: modalEnter;
+    animation-duration: 0.3s;
+}
+
+.modal-container p {
+    margin-bottom: 30px;
+}
+
+.modal-container button {
+    width: 185px;
+    margin: 19px 6px;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.modal-container .cancel-button {
+    background-color: #E0635A;
+}
+
+.modal-container .confirm-button {
+    background-color: #61C161;
+}
+
+@keyframes modalEnter {
+    from {top: 27%; opacity: 0;}
+    to {top: 30%; opacity: 1;}
 }
