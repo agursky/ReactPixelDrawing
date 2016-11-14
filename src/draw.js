@@ -41,17 +41,17 @@ var MobileContainer = function(props) {
 }
 
 var TableRow = function(props) {
-    return (<tr>
+    return (<div className='table-row'>
                 {props.cellData.map(function(item) {
                   
                   return <TableCell key={item.id} styles={{backgroundColor: item.color}} clickFunc={function() {props.trClickFunc(item)}}/>
                 })}
-            </tr>
+            </div>
            );
 }
 
 var TableCell = function(props) {
-    return <td className='box' style={props.styles} onClick={props.clickFunc}></td>;
+    return <div className='box table-cell' style={props.styles} onClick={props.clickFunc}></div>;
 }
 
 var Modal = function(props) {
@@ -181,15 +181,15 @@ var Application = React.createClass({
                 </div> 
                 <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage]}/>
                 <div className = 'boxContainer'>
-                    <table>
-                        <tbody>
+                    <div className='table-container'>
+                        
                             {this.state.drawingTable.map(function(item, index) {
                                 return (        
                                     <TableRow key={index} cellData={item} trClickFunc= {this.changeBoxColor}/>
                                     )}.bind(this))}
                                     
-                        </tbody>
-                    </table>
+                        
+                    </div>
                 </div>
                 <MobileContainer />
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
