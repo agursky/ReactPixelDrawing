@@ -36,7 +36,7 @@ for (var x = 0; x < colorGridChoices.length; x+=1) {
 
 var ColorBox = function(props) {
     var divStyle = {backgroundColor: props.style};
-    return <div className='outerBox' onClick={props.changeDrawColor}><div className='innerBox' style={divStyle}></div></div>;
+    return <button type='button' className='outerBox' onClick={props.changeDrawColor}><div className='innerBox' style={divStyle}></div></button>;
 }
 
 var MobileContainer = function(props) {
