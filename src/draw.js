@@ -1,9 +1,17 @@
 //Create Table
+if (window.innerWidth < 768) {
+    var colQuant = Math.floor(window.innerWidth/28) - 1;
+    var colorContainerInit = 'none';
+} else {
+    var colQuant = 20;
+    var colorContainerInit = 'block';
+}
+
 
 var tableData = [];
 var rowQuant = 20;
-var colQuant = 20;
 var cellCount = 0;
+
 
 for (var x = 0; x < rowQuant; x+=1) {
     tableData.push([]);
@@ -34,7 +42,7 @@ var ColorBox = function(props) {
 var MobileContainer = function(props) {
        return (
         <div className='mobileContainer'>
-                    <button type='button' className='mobile-button'><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
+                    <button type='button' className='mobile-button' onClick={props.colorClickFunc}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
                 </div>
     )
     
@@ -63,6 +71,24 @@ var Modal = function(props) {
         </div>
     );
 }
+
+//var StickyBorder = React.createClass({
+//    getInitialState: function() {
+//        return {
+//            borderHeight: '33px'
+//        }
+//    },
+//    changeStuff: function() {
+//        console.log($(window).height());
+//        console.log('hi');
+//    },
+//    render: function(props) {
+//        return (
+//            <div id='sticky-border' onClick={this.changeStuff}></div>
+//        );
+//        
+//    }
+//})
 
 var ButtonContainer = React.createClass({
     getInitialState: function() {
@@ -96,7 +122,8 @@ var Application = React.createClass({
             drawingTable: this.props.tableData,
             currentColor: 'black',
             modalMessage: 'Are you sure you want to erase EVERYTHING?',
-            modalStyle: {display: 'none'}
+            modalStyle: {display: 'none'}, 
+            colorContainerStyle: {}
         };
     },
     changeBoxColor: function(val) {
@@ -171,27 +198,38 @@ var Application = React.createClass({
         this.removeModal();
         this.setState(this.state);
     },
+    togglePalette: function() {
+        var togPal = 'block';
+        console.log(this.state.colorContainerStyle.display);
+        console.log(this.state.colorContainerStyle.display === 'block');
+        if (this.state.colorContainerStyle.display === 'block') {
+            togPal = 'none';
+        }
+        console.log(togPal);
+        this.state.colorContainerStyle = {display: togPal};
+        this.setState(this.state);
+    },
     render: function(props) {
         return(
             <div>
-                <div className = 'colorContainer'>
-                    {this.props.colorArray.map(function(item) {
-                        return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {this.changeColorChoice(item.color)}.bind(this)}/>
-                }.bind(this))}
+                <div className = 'colorContainer' style={this.state.colorContainerStyle}>
+                    <button type = 'button' className = 'xOut' onClick = {this.togglePalette}>&#10006;&#xFE0E;</button>
+                    <div className = 'sub-color-container'>
+                        {this.props.colorArray.map(function(item) {
+                            return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {this.changeColorChoice(item.color)}.bind(this)}/>
+                        }.bind(this))}
+                    </div>
                 </div> 
                 <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage]}/>
                 <div className = 'boxContainer'>
                     <div className='table-container'>
-                        
                             {this.state.drawingTable.map(function(item, index) {
                                 return (        
                                     <TableRow key={index} cellData={item} trClickFunc= {this.changeBoxColor}/>
                                     )}.bind(this))}
-                                    
-                        
                     </div>
                 </div>
-                <MobileContainer />
+                <MobileContainer colorClickFunc={this.togglePalette}/>
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
             </div>
         )
@@ -204,3 +242,4 @@ ReactDOM.render(
   <Application tableData={tableData} colorArray={colorGrid}/>,
   document.getElementById('container')
 );
+
