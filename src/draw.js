@@ -200,12 +200,9 @@ var Application = React.createClass({
     },
     togglePalette: function() {
         var togPal = 'block';
-        console.log(this.state.colorContainerStyle.display);
-        console.log(this.state.colorContainerStyle.display === 'block');
         if (this.state.colorContainerStyle.display === 'block') {
             togPal = 'none';
         }
-        console.log(togPal);
         this.state.colorContainerStyle = {display: togPal};
         this.setState(this.state);
     },
@@ -216,7 +213,12 @@ var Application = React.createClass({
                     <button type = 'button' className = 'xOut' onClick = {this.togglePalette}>&#10006;&#xFE0E;</button>
                     <div className = 'sub-color-container'>
                         {this.props.colorArray.map(function(item) {
-                            return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {this.changeColorChoice(item.color)}.bind(this)}/>
+                            return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {
+                                this.changeColorChoice(item.color); 
+                                if (window.innerWidth < 768) {
+                                    this.togglePalette();
+                                }
+                            }.bind(this)}/>
                         }.bind(this))}
                     </div>
                 </div> 
