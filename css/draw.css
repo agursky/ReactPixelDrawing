@@ -11,8 +11,6 @@ body {
 }
 
 #container {
-    position: absolute;
-    margin: auto;
     width: 10000px;
 }
 
