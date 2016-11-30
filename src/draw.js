@@ -1,4 +1,4 @@
-//Create Table
+//Determine number of rows and columns in box container based on width and height of browser
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
     var rowQuant = Math.floor((window.innerHeight - 78)/36) - 1;
@@ -17,9 +17,10 @@ if (window.innerWidth < 768) {
 
 
 
+//Create Table
+
 var tableData = [];
 var cellCount = 0;
-
 
 for (var x = 0; x < rowQuant; x+=1) {
     tableData.push([]);
