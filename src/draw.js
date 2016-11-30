@@ -1,18 +1,23 @@
 //Create Table
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
+    var rowQuant = Math.floor((window.innerHeight - 78)/36) - 1;
     var colorContainerInit = 'none';
-} else if (window.innerWidth < 1024) {
+} else {
     var colQuant = Math.floor((window.innerWidth - 395)/28) - 1;
+    var rowQuant = Math.floor((window.innerHeight - 88)/28) - 1;
+    if (colQuant > 20) {
+        colQuant = 20;
+    }
+    if (rowQuant > 20) {
+        rowQuant = 20;
+    }
     var colorContainerInit = 'block';
-}else {
-    var colQuant = 20;
-    var colorContainerInit = 'block';
-}
+} 
+
 
 
 var tableData = [];
-var rowQuant = 20;
 var cellCount = 0;
 
 
@@ -23,7 +28,6 @@ for (var x = 0; x < rowQuant; x+=1) {
         cellCount+=1;
     }
 }
-
 
 
 //Create Color Pallette
@@ -230,4 +234,5 @@ ReactDOM.render(
   document.getElementById('container')
 );
 
-console.log($('.boxContainer').width());
+console.log(window.innerHeight - 88);
+console.log($('.boxContainer').height());
