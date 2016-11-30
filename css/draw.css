@@ -63,9 +63,16 @@ body {
 button {
     border: none;
     outline: none;
+    -webkit-transition: 0.4s;
     transition: 0.4s;
     background-color: transparent;
     
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
 .buttonContainer button {
@@ -101,6 +108,7 @@ button img {
     border-radius: 2px;
     font-size: 14px;
     opacity: 0;
+    -webkit-transition: 0.4s;
     transition: 0.4s;
 }
 
@@ -174,13 +182,16 @@ button.outerBox:hover {
     position: fixed;
     top: 30%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
     background-color: white;
     padding: 40px 40px 20px;
     border: 1px solid #cecece;
     text-align: center;
-    animation-name: modalEnter;
-    animation-duration: 0.3s;
+    -webkit-animation-name: modalEnter;
+            animation-name: modalEnter;
+    -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
     min-width: initial;
     width: 85%;
     z-index: 10;
@@ -205,6 +216,11 @@ button.outerBox:hover {
 
 .modal-container .confirm-button {
     background-color: #61C161;
+}
+
+@-webkit-keyframes modalEnter {
+    from {top: 27%; opacity: 0;}
+    to {top: 30%; opacity: 1;}
 }
 
 @keyframes modalEnter {
@@ -256,7 +272,8 @@ button.outerBox:hover {
         position: initial;
         width: 256px;
         height: auto;
-        transform: none;
+        -webkit-transform: none;
+                transform: none;
         border-top: 1px solid;
         border-left: 1px solid;
     }
