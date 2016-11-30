@@ -1,6 +1,6 @@
 //Create Table
 if (window.innerWidth < 768) {
-    var colQuant = Math.floor(window.innerWidth/28) - 1;
+    var colQuant = Math.floor(window.innerWidth/36) - 1;
     var colorContainerInit = 'none';
 } else {
     var colQuant = 20;
@@ -22,6 +22,7 @@ for (var x = 0; x < rowQuant; x+=1) {
 }
 
 
+
 //Create Color Pallette
 
 var colorGrid = [];
@@ -37,15 +38,6 @@ for (var x = 0; x < colorGridChoices.length; x+=1) {
 var ColorBox = function(props) {
     var divStyle = {backgroundColor: props.style};
     return <button type='button' className='outerBox' onClick={props.changeDrawColor}><div className='innerBox' style={divStyle}></div></button>;
-}
-
-var MobileContainer = function(props) {
-       return (
-        <div className='mobileContainer'>
-                    <button type='button' className='mobile-button' onClick={props.colorClickFunc}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
-                </div>
-    )
-    
 }
 
 var TableRow = function(props) {
@@ -72,23 +64,14 @@ var Modal = function(props) {
     );
 }
 
-//var StickyBorder = React.createClass({
-//    getInitialState: function() {
-//        return {
-//            borderHeight: '33px'
-//        }
-//    },
-//    changeStuff: function() {
-//        console.log($(window).height());
-//        console.log('hi');
-//    },
-//    render: function(props) {
-//        return (
-//            <div id='sticky-border' onClick={this.changeStuff}></div>
-//        );
-//        
-//    }
-//})
+var MobileContainer = function(props) {
+       return (
+        <div className='mobileContainer'>
+                    <button type='button' className='mobile-button' onClick={props.colorClickFunc}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
+                </div>
+    )
+    
+}
 
 var ButtonContainer = React.createClass({
     getInitialState: function() {
@@ -109,6 +92,7 @@ var ButtonContainer = React.createClass({
                     <button type='button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Add Row')}.bind(this)}><img src='img/addRow.png' alt='Add Row Button'/></button>
                     <button type='button' onClick={this.props.buttonFunc[4]} onMouseOver={function() {this.hoverFunc('Start Over')}.bind(this)}><img src='img/clear.png' alt='Clear Button'/></button>
                     <button type='button' onClick={this.props.buttonFunc[5]} onMouseOver={function() {this.hoverFunc('Save')}.bind(this)}><img src='img/save.png' alt='Save Button'/></button>
+                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[6]} onMouseOver={function() {this.hoverFunc('Choose a Color')}.bind(this)}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
                     <span className='helper-span'>{this.state.helperText}</span>
                 </div>
         )
@@ -222,7 +206,7 @@ var Application = React.createClass({
                         }.bind(this))}
                     </div>
                 </div> 
-                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage]}/>
+                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage, this.togglePalette]}/>
                 <div className = 'boxContainer'>
                     <div className='table-container'>
                             {this.state.drawingTable.map(function(item, index) {
@@ -231,7 +215,6 @@ var Application = React.createClass({
                                     )}.bind(this))}
                     </div>
                 </div>
-                <MobileContainer colorClickFunc={this.togglePalette}/>
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
             </div>
         )
@@ -239,9 +222,7 @@ var Application = React.createClass({
 })
 
 
-
 ReactDOM.render(
   <Application tableData={tableData} colorArray={colorGrid}/>,
   document.getElementById('container')
 );
-
