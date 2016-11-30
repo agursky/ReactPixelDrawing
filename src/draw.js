@@ -2,7 +2,10 @@
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
     var colorContainerInit = 'none';
-} else {
+} else if (window.innerWidth < 1024) {
+    var colQuant = Math.floor((window.innerWidth - 395)/28) - 1;
+    var colorContainerInit = 'block';
+}else {
     var colQuant = 20;
     var colorContainerInit = 'block';
 }
@@ -226,3 +229,5 @@ ReactDOM.render(
   <Application tableData={tableData} colorArray={colorGrid}/>,
   document.getElementById('container')
 );
+
+console.log($('.boxContainer').width());
