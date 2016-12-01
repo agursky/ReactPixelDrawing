@@ -1,4 +1,13 @@
 //Determine number of rows and columns in box container based on width and height of browser
+//var windowRef = 36;
+//if (window.innerWidth >= 768) {
+//    windowRef = 28;
+//}
+//
+//window.onresize = function () {
+//    console.log(window.innerWidth);
+//}
+
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
     var rowQuant = Math.floor((window.innerHeight - 78)/36) - 1;
@@ -149,7 +158,6 @@ var Application = React.createClass({
     removeRow: function() {
         this.state.drawingTable.pop();
         rowQuant-=1;
-//        cellCount-=colQuant;
         this.setState(this.state);
     },
     addColumn: function() {
@@ -158,6 +166,8 @@ var Application = React.createClass({
             cellCount+=1;
         }
         colQuant+=1;
+//        $('#container').width($('#container').width() + 36);
+//        console.log($('#container').width());
         this.setState(this.state);
     },
     removeColumn: function() {
@@ -165,7 +175,8 @@ var Application = React.createClass({
             this.state.drawingTable[x].pop();
         }
         colQuant-=1;
-//        cellCount-=rowQuant;
+//        $('#container').width($('#container').width() - 36);
+//        console.log($('#container').width());
         this.setState(this.state);
     },
     saveImage: function() {

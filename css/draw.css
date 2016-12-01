@@ -1,9 +1,20 @@
-* {
+.example {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background: -webkit-linear-gradient(top, white, black);
+    background: linear-gradient(to bottom, white, black);
+}* {
     box-sizing: border-box;
     color: #575757;
     font-family: 'Open Sans', sans-serif !important;
 }
-
 
 body {
     background-color: #ddf0ff;
@@ -11,7 +22,6 @@ body {
 }
 
 #container {
-    width: 10000px;
 }
 
 .boxContainer, .colorContainer, .buttonContainer {
@@ -28,6 +38,7 @@ body {
     padding: 10px;
     margin: 8px;
     float: left;
+    white-space: nowrap;
 }
 
 .box {
@@ -57,6 +68,7 @@ body {
     background-color: #54b8ff; 
     padding: 16px;
     width: 100%;
+    max-width: 100%;
     bottom: 0;
 }
 
@@ -264,6 +276,7 @@ button.outerBox:hover {
         display: block !important;
         position: fixed;
         padding: 10px !important;
+        overflow: auto;
         
     }
     
