@@ -205,7 +205,7 @@ var Application = React.createClass({
         if (window.innerWidth < 768) {
             var windowWidth = $(window).width();
             var boxContainerWidth = $('.boxContainer').outerWidth();
-            $('.boxContainer').css('margin', (windowWidth - boxContainerWidth)/2 + 'px');
+            $('.boxContainer').css('margin-left', (windowWidth - boxContainerWidth)/2 + 'px');
         }
     },
     render: function(props) {
