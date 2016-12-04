@@ -1,12 +1,4 @@
 //Determine number of rows and columns in box container based on width and height of browser
-//var windowRef = 36;
-//if (window.innerWidth >= 768) {
-//    windowRef = 28;
-//}
-//
-//window.onresize = function () {
-//    console.log(window.innerWidth);
-//}
 
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
@@ -209,6 +201,13 @@ var Application = React.createClass({
         this.state.colorContainerStyle = {display: togPal};
         this.setState(this.state);
     },
+    componentDidMount: function() {
+        if (window.innerWidth < 768) {
+            var windowWidth = $(window).width();
+            var boxContainerWidth = $('.boxContainer').outerWidth();
+            $('.boxContainer').css('margin', (windowWidth - boxContainerWidth)/2 + 'px');
+        }
+    },
     render: function(props) {
         return(
             <div>
@@ -245,6 +244,3 @@ ReactDOM.render(
   <Application tableData={tableData} colorArray={colorGrid}/>,
   document.getElementById('container')
 );
-
-console.log(window.innerHeight - 88);
-console.log($('.boxContainer').height());

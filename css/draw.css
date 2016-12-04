@@ -36,9 +36,9 @@ body {
 
 .boxContainer {
     padding: 10px;
-    margin: 8px;
-    float: left;
+    margin: 8px 8px 88px;
     white-space: nowrap;
+    float: left;
 }
 
 .box {
@@ -266,7 +266,7 @@ button.outerBox:hover {
     }
     
     .boxContainer {
-        margin: 30px 25px 100px 395px;
+        margin: 30px 25px 100px 395px !important;
     }
     
     .colorContainer {
