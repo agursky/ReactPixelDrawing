@@ -1,33 +1,23 @@
-.example {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    background: -webkit-linear-gradient(top, white, black);
-    background: linear-gradient(to bottom, white, black);
-}* {
+
+* {
     box-sizing: border-box;
     color: #575757;
     font-family: 'Open Sans', sans-serif !important;
 }
 
-body {
-    background-color: #ddf0ff;
-    
-}
+html, body {
+    height:100%;
+    overflow:auto
+} /*fixes fixed position problem on screen rotate for mobile devices*/
 
-#container {
+
+body {
+    background-color: #ddf0ff; 
 }
 
 .boxContainer, .colorContainer, .buttonContainer {
     box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
 }
-
 
 .boxContainer, .colorContainer {
     background-color: white;
@@ -70,6 +60,7 @@ body {
     width: 100%;
     max-width: 100%;
     bottom: 0;
+    -webkit-transform: translateZ(0); 
 }
 
 button {
@@ -140,7 +131,7 @@ button img {
     overflow: scroll;
 }
 
-.colorContainer .xOut {
+.xOut {
     color: #ff9574;
     position: absolute;
     top: 0.2em;
@@ -248,6 +239,87 @@ button.outerBox:hover {
     
 }
 
+.resize-icon-container {
+    z-index: 10;
+    position: fixed;
+    transform: translateX(-50%);
+    width: 105px;
+    height: 105px;
+    border: 1px solid;
+    top: 30%;
+    left: 50%;
+}
+
+.resize-icon {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #51d451;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation-name: checkBoxEnter;
+    animation-duration: 1.6s;
+    border: 1px solid transparent;
+
+/*    opacity: 0;*/
+}
+
+.resize-icon img {
+    width: 100%;
+}
+
+.resize-icon-container span {
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+/*
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+*/
+}
+
+@keyframes checkBoxEnter {
+    0% {top: 0; opacity: 0; border: 85px solid #51d451;}
+    50% {top: 0; opacity: .5; border: 20px solid #51d451;}
+    75% {top: 0; opacity: 1; border: 5px solid #51d451;}
+    100% {top: 0; opacity: 0; border: 1px solid #51d451;}
+
+}
+
+.help-window {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: block;
+    overflow: scroll;
+}
+
+.help-icon-container {
+    display: inline-block;
+    width: 50%;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.help-icon-container img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 8px auto;
+}
+
+.help-icon-container span {
+    font-size: 0.8em;
+    
+}
+
 @media screen and (min-width: 768px) {
     
     .box {
@@ -330,4 +402,5 @@ button.outerBox:hover {
     .colorContainer .xOut {
     display: none;
     }
+    
 }

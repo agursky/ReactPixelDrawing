@@ -1,5 +1,6 @@
 //Determine number of rows and columns in box container based on width and height of browser
 
+
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
     var rowQuant = Math.floor((window.innerHeight - 78)/36) - 1;
@@ -15,7 +16,6 @@ if (window.innerWidth < 768) {
     }
     var colorContainerInit = 'block';
 } 
-
 
 
 //Create Table
@@ -36,7 +36,12 @@ for (var x = 0; x < rowQuant; x+=1) {
 
 var colorGrid = [];
 var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffe9c9', '#ffd69a', '#ffc56f', '#ffaa2d', '#ff9800', '#fffce3', '#fff7b3', '#fff283', '#ffed53', '#ffe500', '#c6edc7', '#9ce09e', '#71c674', '#4caf50', '#2e9f33', '#bbd7ed', '#90c5ef', '#54abf0', '#2196f3', '#0382e8', '#d3b8d8', '#ba82c4', '#b452c4', '#9c27b0', '#85019b', '#ffd2da', '#ffb0be', '#ff9bad', '#ff7991', '#ff718a'];
-
+var buttonInfo = [{imgSrc: 'img/addCol.png', alt: 'Add Column Button'}, {imgSrc: 'img/addRow.png', alt: 'Add Row Button'}, {imgSrc: 'img/remCol.png', alt: 'Remove Column Button'}, {imgSrc: 'img/remRow.png', alt: 'remove Row Button'}, {imgSrc: 'img/save.png', alt: 'Save Image Button'}];
+            
+            
+            
+            
+            
 
 for (var x = 0; x < colorGridChoices.length; x+=1) {
     colorGrid.push({color: colorGridChoices[x], id: x});
@@ -73,6 +78,23 @@ var Modal = function(props) {
     );
 }
 
+var HelpWindow = function(props) {
+    var itr = 0;
+    return (
+        <div className='help-window' style={props.style}>
+        <button type = 'button' className = 'xOut' onClick = {props.xOut}>&#10006;&#xFE0E;</button>
+        {props.helpButtons.map(function(item) {
+        itr+=1;
+            return <div className='help-icon-container' key={itr}>
+                    <img src={item.imgSrc} alt={item.alt} />
+                    <span>{item.alt}</span>
+                    </div>
+        })}
+        </div>
+    )
+    
+}
+
 var MobileContainer = function(props) {
        return (
         <div className='mobileContainer'>
@@ -95,13 +117,14 @@ var ButtonContainer = React.createClass({
     render: function(props) {
         return(
             <div className = 'buttonContainer'>
-                    <button type='button' onClick={this.props.buttonFunc[0]} onMouseOver={function() {this.hoverFunc('Remove Column')}.bind(this)}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
-                    <button type='button' onClick={this.props.buttonFunc[1]} onMouseOver={function() {this.hoverFunc('Remove Row')}.bind(this)}><img src='img/remRow.png' alt='Remove Row Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[2]} onMouseOver={function() {this.hoverFunc('Add Column')}.bind(this)}><img src='img/addCol.png' alt='Add Column Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Add Row')}.bind(this)}><img src='img/addRow.png' alt='Add Row Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[4]} onMouseOver={function() {this.hoverFunc('Start Over')}.bind(this)}><img src='img/clear.png' alt='Clear Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[5]} onMouseOver={function() {this.hoverFunc('Save')}.bind(this)}><img src='img/save.png' alt='Save Button'/></button>
-                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[6]} onMouseOver={function() {this.hoverFunc('Choose a Color')}.bind(this)}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
+                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[0]} onMouseOver={function() {this.hoverFunc('Help')}.bind(this)}><img src='img/help.svg' alt='Help Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[1]} onMouseOver={function() {this.hoverFunc('Remove Column')}.bind(this)}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
+                    <button type='button' onClick={this.props.buttonFunc[2]} onMouseOver={function() {this.hoverFunc('Remove Row')}.bind(this)}><img src='img/remRow.png' alt='Remove Row Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Add Column')}.bind(this)}><img src='img/addCol.png' alt='Add Column Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[4]} onMouseOver={function() {this.hoverFunc('Add Row')}.bind(this)}><img src='img/addRow.png' alt='Add Row Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[5]} onMouseOver={function() {this.hoverFunc('Start Over')}.bind(this)}><img src='img/clear.png' alt='Clear Button'/></button>
+                    <button type='button' onClick={this.props.buttonFunc[6]} onMouseOver={function() {this.hoverFunc('Save')}.bind(this)}><img src='img/save.png' alt='Save Button'/></button>
+                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[7]} onMouseOver={function() {this.hoverFunc('Choose a Color')}.bind(this)}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
                     <span className='helper-span'>{this.state.helperText}</span>
                 </div>
         )
@@ -116,7 +139,8 @@ var Application = React.createClass({
             currentColor: 'black',
             modalMessage: 'Are you sure you want to erase EVERYTHING?',
             modalStyle: {display: 'none'}, 
-            colorContainerStyle: {}
+            colorContainerStyle: {},
+            helpStyle: {}
         };
     },
     changeBoxColor: function(val) {
@@ -146,11 +170,16 @@ var Application = React.createClass({
             cellCount+=1;
         }
         this.setState(this.state);
+//        this.showCheckBox();
     },
     removeRow: function() {
-        this.state.drawingTable.pop();
-        rowQuant-=1;
-        this.setState(this.state);
+        if (rowQuant > 1) {
+            this.state.drawingTable.pop();
+            rowQuant-=1;
+            this.setState(this.state);
+//            this.showCheckBox();   
+        }
+        
     },
     addColumn: function() {
         for (var x = 0; x < rowQuant; x+=1) {
@@ -161,15 +190,18 @@ var Application = React.createClass({
 //        $('#container').width($('#container').width() + 36);
 //        console.log($('#container').width());
         this.setState(this.state);
+//        this.showCheckBox();
     },
     removeColumn: function() {
-        for (var x = 0; x < rowQuant; x+=1) {
-            this.state.drawingTable[x].pop();
+        if (colQuant > 1) {
+            for (var x = 0; x < rowQuant; x+=1) {
+                this.state.drawingTable[x].pop();
+            }
+            colQuant-=1;
+            this.setState(this.state);
+//            this.showCheckBox();   
         }
-        colQuant-=1;
-//        $('#container').width($('#container').width() - 36);
-//        console.log($('#container').width());
-        this.setState(this.state);
+        
     },
     saveImage: function() {
         html2canvas(document.getElementsByClassName('boxContainer'), {
@@ -193,12 +225,14 @@ var Application = React.createClass({
         this.removeModal();
         this.setState(this.state);
     },
-    togglePalette: function() {
+    toggler: function(el) {
         var togPal = 'block';
-        if (this.state.colorContainerStyle.display === 'block') {
+        if (this.state[el].display === 'block') {
             togPal = 'none';
+            console.log(true);
         }
-        this.state.colorContainerStyle = {display: togPal};
+        this.state[el] = {display: togPal};
+        console.log(this.state[el]);
         this.setState(this.state);
     },
     componentDidMount: function() {
@@ -206,13 +240,19 @@ var Application = React.createClass({
             var windowWidth = $(window).width();
             var boxContainerWidth = $('.boxContainer').outerWidth();
             $('.boxContainer').css('margin-left', (windowWidth - boxContainerWidth)/2 + 'px');
-        }
+        }        
+    },
+    showCheckBox: function() {
+        $('.resize-icon-container').remove();
+        $('#container').append("<div class='resize-icon-container'><div class='resize-icon'><img src='img/check.svg'/></div><span>+1 Row Added</span></div>");
+        
+        
     },
     render: function(props) {
         return(
             <div>
                 <div className = 'colorContainer' style={this.state.colorContainerStyle}>
-                    <button type = 'button' className = 'xOut' onClick = {this.togglePalette}>&#10006;&#xFE0E;</button>
+                    <button type = 'button' className = 'xOut' onClick = {function() {this.toggler('colorContainerStyle');}.bind(this)}>&#10006;&#xFE0E;</button>
                     <div className = 'sub-color-container'>
                         {this.props.colorArray.map(function(item) {
                             return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {
@@ -224,7 +264,7 @@ var Application = React.createClass({
                         }.bind(this))}
                     </div>
                 </div> 
-                <ButtonContainer buttonFunc = {[this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage, this.togglePalette]}/>
+                <ButtonContainer buttonFunc = {[function() {this.toggler('helpStyle')}.bind(this), this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage, function() {this.toggler('colorContainerStyle')}.bind(this)]}/>
                 <div className = 'boxContainer'>
                     <div className='table-container'>
                             {this.state.drawingTable.map(function(item, index) {
@@ -234,6 +274,8 @@ var Application = React.createClass({
                     </div>
                 </div>
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
+                <HelpWindow style={this.state.helpStyle} xOut={function() {this.toggler('helpStyle');}.bind(this)} helpButtons = {buttonInfo}/>
+
             </div>
         )
     }
