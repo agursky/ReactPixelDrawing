@@ -119,6 +119,10 @@ button img {
     opacity: 1 !important;
 }
 
+.desktop-button {
+    display: none;
+}
+
 .colorContainer {
     width: 100%;
     margin: 0;
@@ -379,6 +383,10 @@ button.outerBox:hover {
     
     .buttonContainer button {
         margin: 4px;
+    }
+    
+    .desktop-button {
+        display: initial;
     }
     
     .sub-color-container, button.outerBox {

@@ -95,6 +95,17 @@ var HelpWindow = function(props) {
     
 }
 
+var AddRemoveWindow = function(props) {
+    return (
+        <div>
+            <img src='img/addRow.png' alt='Add Row'/>
+            <img src='img/addRow.png' alt='Add Row'/>
+            <img src='img/addRow.png' alt='Add Row'/>
+            <img src='img/addRow.png' alt='Add Row'/>
+        </div>
+    )
+}
+
 var MobileContainer = function(props) {
        return (
         <div className='mobileContainer'>
@@ -118,10 +129,10 @@ var ButtonContainer = React.createClass({
         return(
             <div className = 'buttonContainer'>
                     <button type='button' className='mobile-button' onClick={this.props.buttonFunc[0]} onMouseOver={function() {this.hoverFunc('Help')}.bind(this)}><img src='img/help.svg' alt='Help Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[1]} onMouseOver={function() {this.hoverFunc('Remove Column')}.bind(this)}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
-                    <button type='button' onClick={this.props.buttonFunc[2]} onMouseOver={function() {this.hoverFunc('Remove Row')}.bind(this)}><img src='img/remRow.png' alt='Remove Row Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Add Column')}.bind(this)}><img src='img/addCol.png' alt='Add Column Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[4]} onMouseOver={function() {this.hoverFunc('Add Row')}.bind(this)}><img src='img/addRow.png' alt='Add Row Button'/></button>
+                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[1]} onMouseOver={function() {this.hoverFunc('Remove Column')}.bind(this)}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
+                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[2]} onMouseOver={function() {this.hoverFunc('Remove Row')}.bind(this)}><img src='img/remRow.png' alt='Remove Row Button'/></button>
+                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Add Column')}.bind(this)}><img src='img/addCol.png' alt='Add Column Button'/></button>
+                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[4]} onMouseOver={function() {this.hoverFunc('Add Row')}.bind(this)}><img src='img/addRow.png' alt='Add Row Button'/></button>
                     <button type='button' onClick={this.props.buttonFunc[5]} onMouseOver={function() {this.hoverFunc('Start Over')}.bind(this)}><img src='img/clear.png' alt='Clear Button'/></button>
                     <button type='button' onClick={this.props.buttonFunc[6]} onMouseOver={function() {this.hoverFunc('Save')}.bind(this)}><img src='img/save.png' alt='Save Button'/></button>
                     <button type='button' className='mobile-button' onClick={this.props.buttonFunc[7]} onMouseOver={function() {this.hoverFunc('Choose a Color')}.bind(this)}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
@@ -258,7 +269,7 @@ var Application = React.createClass({
                             return <ColorBox style={item.color} key={item.id} changeDrawColor={function() {
                                 this.changeColorChoice(item.color); 
                                 if (window.innerWidth < 768) {
-                                    this.togglePalette();
+                                    this.toggler('colorContainerStyle');
                                 }
                             }.bind(this)}/>
                         }.bind(this))}
@@ -274,7 +285,7 @@ var Application = React.createClass({
                     </div>
                 </div>
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
-                <HelpWindow style={this.state.helpStyle} xOut={function() {this.toggler('helpStyle');}.bind(this)} helpButtons = {buttonInfo}/>
+                <AddRemoveWindow />
 
             </div>
         )
