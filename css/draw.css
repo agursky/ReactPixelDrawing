@@ -1,3 +1,4 @@
+/******General*************************************************************************/
 
 * {
     box-sizing: border-box;
@@ -15,7 +16,7 @@ body {
     background-color: #ddf0ff; 
 }
 
-.boxContainer, .colorContainer, .buttonContainer {
+.boxContainer, .colorContainer, .buttonContainer, .add-remove {
     box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
 }
 
@@ -23,6 +24,20 @@ body {
     background-color: white;
     
 }
+
+.desktop-button {
+    display: none;
+}
+
+.center {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+}
+
+/******Grid*************************************************************************/
+
 
 .boxContainer {
     padding: 10px;
@@ -52,6 +67,9 @@ body {
     border-right: 1px solid #eaeaea;
     border-bottom: 1px solid #eaeaea;
 }
+
+/******Buttons*************************************************************************/
+
 
 .buttonContainer {
     position: fixed;
@@ -119,9 +137,7 @@ button img {
     opacity: 1 !important;
 }
 
-.desktop-button {
-    display: none;
-}
+/******Color Grid*************************************************************************/
 
 .colorContainer {
     width: 100%;
@@ -173,18 +189,7 @@ button.outerBox:hover {
     border: 1px solid #eaeaea;
 }
 
-/*
-.mobile-button {
-    position: fixed; 
-    width: 50px;
-    top: 26px;
-    right: 46px;
-}
-
-.mobile-button img {
-    width: 100%;
-}
-*/
+/******Modal*************************************************************************/
 
 .modal-container {
     position: fixed;
@@ -210,7 +215,7 @@ button.outerBox:hover {
     line-height: 1.5;
 }
 
-.modal-container button {
+.modal-container button, .add-remove .confirm-button {
     width: 100%;
     margin: 3px 6px;
     color: white;
@@ -218,11 +223,11 @@ button.outerBox:hover {
     padding: 10px;
 }
 
-.modal-container .cancel-button {
+.cancel-button {
     background-color: #E0635A;
 }
 
-.modal-container .confirm-button {
+.confirm-button {
     background-color: #61C161;
 }
 
@@ -242,6 +247,9 @@ button.outerBox:hover {
     width: 100%;
     
 }
+
+/******Resize*************************************************************************/
+
 
 .resize-icon-container {
     z-index: 10;
@@ -295,6 +303,9 @@ button.outerBox:hover {
 
 }
 
+/******Help Window*************************************************************************/
+
+
 .help-window {
     position: fixed;
     background-color: white;
@@ -323,6 +334,45 @@ button.outerBox:hover {
     font-size: 0.8em;
     
 }
+
+/******Add Remove Window*************************************************************************/
+
+.add-remove {
+   display: none;
+    background-color: white;
+    width: 80%;
+    padding: 20px 20px 8px;
+    z-index: 7;
+}
+
+.add-remove-container {
+    display: inline-block;
+    padding: 24px;
+    text-align: center;
+    width: 25%;
+    height: 134px;
+    overflow: auto;
+}
+
+.add-remove button {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: auto;
+}
+
+.add-remove button img {
+    width: 100%;
+}
+
+.add-remove span {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/******Desktop View*************************************************************************/
+
 
 @media screen and (min-width: 768px) {
     

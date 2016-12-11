@@ -97,23 +97,24 @@ var HelpWindow = function(props) {
 
 var AddRemoveWindow = function(props) {
     return (
-        <div>
-            <img src='img/addRow.png' alt='Add Row'/>
-            <img src='img/addRow.png' alt='Add Row'/>
-            <img src='img/addRow.png' alt='Add Row'/>
-            <img src='img/addRow.png' alt='Add Row'/>
+        <div className='add-remove center' style={props.style}>
+        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[0]}><img src='img/addRow.png' alt='Add Row'/></button><span>Add Row</span></div>
+        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[1]}><img src='img/addCol.png' alt='Add Column'/></button><span>Add Column</span></div>
+        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[2]}><img src='img/remRow.png' alt='Remove Row'/></button><span>Remove Row</span></div>
+        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[3]}><img src='img/remCol.png' alt='Remove Column'/></button><span>Remove Column</span></div>
+        <button type='button' className='confirm-button' onClick={props.addRemFunc[4]}>Done</button>
         </div>
     )
 }
 
-var MobileContainer = function(props) {
-       return (
-        <div className='mobileContainer'>
-                    <button type='button' className='mobile-button' onClick={props.colorClickFunc}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
-                </div>
-    )
-    
-}
+//var MobileContainer = function(props) {
+//       return (
+//        <div className='mobileContainer'>
+//                    <button type='button' className='mobile-button' onClick={props.colorClickFunc}><img src='img/mobColor.png' alt='Open Color Menu Button'/></button>
+//                </div>
+//    )
+//    
+//}
 
 var ButtonContainer = React.createClass({
     getInitialState: function() {
@@ -128,7 +129,7 @@ var ButtonContainer = React.createClass({
     render: function(props) {
         return(
             <div className = 'buttonContainer'>
-                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[0]} onMouseOver={function() {this.hoverFunc('Help')}.bind(this)}><img src='img/help.svg' alt='Help Button'/></button>
+                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[0]} onMouseOver={function() {this.hoverFunc('Resize Grid')}.bind(this)}><img src='img/addRemove.svg' alt='Resize Grid Button'/></button>
                     <button type='button' className='desktop-button' onClick={this.props.buttonFunc[1]} onMouseOver={function() {this.hoverFunc('Remove Column')}.bind(this)}><img src='img/remCol.png' alt='Remove Column Button'/></button> 
                     <button type='button' className='desktop-button' onClick={this.props.buttonFunc[2]} onMouseOver={function() {this.hoverFunc('Remove Row')}.bind(this)}><img src='img/remRow.png' alt='Remove Row Button'/></button>
                     <button type='button' className='desktop-button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Add Column')}.bind(this)}><img src='img/addCol.png' alt='Add Column Button'/></button>
@@ -151,7 +152,8 @@ var Application = React.createClass({
             modalMessage: 'Are you sure you want to erase EVERYTHING?',
             modalStyle: {display: 'none'}, 
             colorContainerStyle: {},
-            helpStyle: {}
+            helpStyle: {}, 
+            addRemoveStyle: {}
         };
     },
     changeBoxColor: function(val) {
@@ -275,7 +277,7 @@ var Application = React.createClass({
                         }.bind(this))}
                     </div>
                 </div> 
-                <ButtonContainer buttonFunc = {[function() {this.toggler('helpStyle')}.bind(this), this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage, function() {this.toggler('colorContainerStyle')}.bind(this)]}/>
+                <ButtonContainer buttonFunc = {[function() {this.toggler('addRemoveStyle')}.bind(this), this.removeColumn, this.removeRow, this.addColumn, this.addRow, this.showModal, this.saveImage, function() {this.toggler('colorContainerStyle')}.bind(this)]}/>
                 <div className = 'boxContainer'>
                     <div className='table-container'>
                             {this.state.drawingTable.map(function(item, index) {
@@ -285,7 +287,7 @@ var Application = React.createClass({
                     </div>
                 </div>
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
-                <AddRemoveWindow />
+                <AddRemoveWindow style={this.state.addRemoveStyle} addRemFunc={[this.addRow, this.addColumn, this.removeRow, this.removeColumn, function() {this.toggler('addRemoveStyle');}.bind(this)]}/>
 
             </div>
         )
