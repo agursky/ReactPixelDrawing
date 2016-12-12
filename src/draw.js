@@ -98,10 +98,14 @@ var HelpWindow = function(props) {
 var AddRemoveWindow = function(props) {
     return (
         <div className='add-remove center' style={props.style}>
-        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[0]}><img src='img/addRow.png' alt='Add Row'/></button><span>Add Row</span></div>
-        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[1]}><img src='img/addCol.png' alt='Add Column'/></button><span>Add Column</span></div>
-        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[2]}><img src='img/remRow.png' alt='Remove Row'/></button><span>Remove Row</span></div>
-        <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[3]}><img src='img/remCol.png' alt='Remove Column'/></button><span>Remove Column</span></div>
+        <div className='add-remove-row'>
+            <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[0]}><img src='img/addRow.png' alt='Add Row'/></button><span>Add<br/> Row</span></div>
+            <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[1]}><img src='img/addCol.png' alt='Add Column'/></button><span>Add<br/>  Column</span></div>
+        </div>
+        <div className='add-remove-row'>
+            <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[2]}><img src='img/remRow.png' alt='Remove Row'/></button><span>Remove<br/>  Row</span></div>
+            <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[3]}><img src='img/remCol.png' alt='Remove Column'/></button><span>Remove<br/>  Column</span></div>
+        </div>
         <button type='button' className='confirm-button' onClick={props.addRemFunc[4]}>Done</button>
         </div>
     )

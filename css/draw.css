@@ -32,9 +32,18 @@ body {
 .center {
     position: fixed;
     left: 50%;
-    top: 30%;
+    top: 20%;
     transform: translateX(-50%);
 }
+
+.abs-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 
 /******Grid*************************************************************************/
 
@@ -349,7 +358,7 @@ button.outerBox:hover {
     display: inline-block;
     padding: 24px;
     text-align: center;
-    width: 25%;
+    width: 50%;
     height: 134px;
     overflow: auto;
 }
@@ -358,7 +367,7 @@ button.outerBox:hover {
     width: 50px;
     height: 50px;
     display: block;
-    margin: auto;
+    margin: auto !important;
 }
 
 .add-remove button img {
@@ -369,6 +378,11 @@ button.outerBox:hover {
     display: block;
     margin-top: 8px;
     font-size: 14px;
+}
+
+.add-remove-row {
+    display: inline-block;
+    width: 50%;
 }
 
 /******Desktop View*************************************************************************/
@@ -459,6 +473,21 @@ button.outerBox:hover {
     
     .colorContainer .xOut {
     display: none;
+    }
+    
+    
+    
+}
+
+/******Extra Small View*************************************************************************/
+
+
+@media screen and (max-width: 650px) {
+    
+     
+    .add-remove-row {
+        display: block;
+        width: 100%;
     }
     
 }
