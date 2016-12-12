@@ -35,7 +35,7 @@ for (var x = 0; x < rowQuant; x+=1) {
 //Create Color Pallette
 
 var colorGrid = [];
-var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffe9c9', '#ffd69a', '#ffc56f', '#ffaa2d', '#ff9800', '#fffce3', '#fff7b3', '#fff283', '#ffed53', '#ffe500', '#c6edc7', '#9ce09e', '#71c674', '#4caf50', '#2e9f33', '#bbd7ed', '#90c5ef', '#54abf0', '#2196f3', '#0382e8', '#d3b8d8', '#ba82c4', '#b452c4', '#9c27b0', '#85019b', '#ffd2da', '#ffb0be', '#ff9bad', '#ff7991', '#ff718a'];
+var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffe1b4', '#ffbf63', '#ffa219', '#f89e19', '#c78118', '#fffce3', '#fff7b3', '#fff283', '#ffed53', '#ffe500', '#c6edc7', '#9ce09e', '#71c674', '#4caf50', '#2e9f33', '#bbd7ed', '#90c5ef', '#54abf0', '#2196f3', '#0382e8', '#d3b8d8', '#ba82c4', '#b452c4', '#9c27b0', '#85019b', '#ffd2da', '#ffb0be', '#ff9bad', '#ff7991', '#ff718a'];
 var buttonInfo = [{imgSrc: 'img/addCol.png', alt: 'Add Column Button'}, {imgSrc: 'img/addRow.png', alt: 'Add Row Button'}, {imgSrc: 'img/remCol.png', alt: 'Remove Column Button'}, {imgSrc: 'img/remRow.png', alt: 'remove Row Button'}, {imgSrc: 'img/save.png', alt: 'Save Image Button'}];
             
             
