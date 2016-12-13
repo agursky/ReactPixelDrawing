@@ -3,11 +3,11 @@
 
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
-    var rowQuant = Math.floor((window.innerHeight - 78)/36) - 1;
+    var rowQuant = Math.floor((window.innerHeight - 63)/36) - 1;
     var colorContainerInit = 'none';
 } else {
     var colQuant = Math.floor((window.innerWidth - 395)/28) - 1;
-    var rowQuant = Math.floor((window.innerHeight - 88)/28) - 1;
+    var rowQuant = Math.floor((window.innerHeight - 58)/28) - 1;
     if (colQuant > 20) {
         colQuant = 20;
     }
