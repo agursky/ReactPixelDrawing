@@ -83,7 +83,7 @@ body {
 .buttonContainer {
     position: fixed;
     background-color: #54b8ff; 
-    padding: 16px;
+    padding: 6px;
     width: 100%;
     max-width: 100%;
     bottom: 0;
@@ -107,10 +107,10 @@ button::-moz-focus-inner {
 
 .buttonContainer button {
     border-bottom: 1px solid #54b8ff;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     float: right;    
-    margin: 8px;
+    margin: 12px;
     padding: 0;
 }
 
@@ -447,6 +447,8 @@ button.outerBox:hover {
     
     .buttonContainer button {
         margin: 4px;
+        width: 30px;
+        height: 30px;
     }
     
     .desktop-button {
