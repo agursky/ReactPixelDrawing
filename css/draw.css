@@ -16,11 +16,11 @@ body {
     background-color: #ddf0ff; 
 }
 
-.boxContainer, .colorContainer, .buttonContainer, .add-remove {
+#boxContainer, .colorContainer, .buttonContainer, .add-remove {
     box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
 }
 
-.boxContainer, .colorContainer {
+#boxContainer, .colorContainer {
     background-color: white;
     
 }
@@ -48,7 +48,7 @@ body {
 /******Grid*************************************************************************/
 
 
-.boxContainer {
+#boxContainer {
     padding: 10px;
     margin: 12px 8px 88px;
     white-space: nowrap;
@@ -385,6 +385,80 @@ button.outerBox:hover {
     width: 50%;
 }
 
+/******Buttons*************************************************************************/
+
+#faq-container {
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    z-index: 6;
+    display: none;
+    
+}
+
+#faq-container .xOut {
+/*    position: fixed;*/
+}
+
+#faq-sub-container {
+    margin: 40px auto;
+    width: 80%;
+    max-width: 800px;
+}
+
+#faq-sub-container * {
+    line-height: normal;
+}
+
+#faq-sub-container h1, #faq-sub-container h2, #faq-sub-container h3 {
+  color: #292929;
+    font-weight: bold;
+}
+
+#faq-sub-container h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+    
+}
+
+#faq-sub-container h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+    
+}
+
+#faq-sub-container h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+    
+}
+
+#faq-sub-container a {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+#faq-sub-container .button-img {
+  width: 1.5em;
+  margin: .3em 0;
+  padding: 0;
+  position: relative;
+  top: .75em;
+}
+
+#faq-sub-container p {
+    margin: 1em 0;
+    line-height: normal;
+}
+
+#faq-sub-container p:first-of-type {
+    margin-top: -1em;
+}
+
 /******Desktop View*************************************************************************/
 
 
@@ -405,7 +479,7 @@ button.outerBox:hover {
         display: block;
     }
     
-    .boxContainer {
+    #boxContainer {
         margin: 30px 25px 100px 395px !important;
     }
     
@@ -477,7 +551,9 @@ button.outerBox:hover {
     display: none;
     }
     
-    
+    #faq-sub-container {
+        margin-top: 80px;
+    }
     
 }
 
