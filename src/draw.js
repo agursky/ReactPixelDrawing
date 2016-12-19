@@ -105,7 +105,7 @@ var FAQContainer = function(props) {
                 <h3>In Firefox and Chrome</h3>
                 <p>In these browswers, when you press the save button (<img className='button-img' src='img/save.png' alt='Save button image'/>) the image file will automatically download into whatever folder you have set as your downloads folder. The file will be named 'Pixel Drawing.png'. For multiple files, a number will be added to the end of the file name to differentiate between drawings.</p>
                 <h3>In Safari, Mobile Safari, and Mobile Chrome</h3>
-                <p>In these browsers, when you press the save button, it will open the image in a new browswer window. From there you can save the image by touching the image (on mobile) or right clicking (on Desktop).</p>
+                <p>In these browsers, when you press the save button (<img className='button-img' src='img/save.png' alt='Save button image'/>), it will open the image in a new browswer window. From there you can save the image by touching the image (on mobile) or right clicking (on Desktop).</p>
                 <h3>In Mobile Firefox</h3>
                 <p>Saving is not supported on Mobile Firefox. Sorry:(</p>
                 <h3>If you have any further questions or feedback, I'd love to hear from you. I can be reached at <a href='mailto:agursky.js@gmail.com'>agursky.js@gmail.com</a></h3>
@@ -233,15 +233,6 @@ var Application = React.createClass({
         
     },
     saveImage: function() {
-        console.log('test casem2');
-//        html2canvas(document.getElementById('boxContainer'), {
-//            onrendered: function(canvas) {
-//                canvas.toBlob(function(blob) {
-//                saveAs(blob, "Pixel Drawing.png");
-//                }
-//            );
-//            }
-//        })
         $('#boxContainer').css({
             position: 'absolute',
             top: 0,
@@ -262,8 +253,6 @@ var Application = React.createClass({
                 
             })
         });
-        
-    
     },
     showModal: function() {
         this.state.modalStyle = {display: 'initial'};
@@ -291,8 +280,8 @@ var Application = React.createClass({
     componentDidMount: function() {
         if (window.innerWidth < 768) {
             var windowWidth = $(window).width();
-            var boxContainerWidth = $('.boxContainer').outerWidth();
-            $('.boxContainer').css('margin-left', (windowWidth - boxContainerWidth)/2 + 'px');
+            var boxContainerWidth = $('#boxContainer').outerWidth();
+            $('#boxContainer').css('margin-left', (windowWidth - boxContainerWidth)/2 + 'px');
         }        
     },
     showCheckBox: function() {
