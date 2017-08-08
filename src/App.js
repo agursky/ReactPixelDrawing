@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 import html2canvas from 'html2canvas';
-import saveAs from 'filesaver.js';
+import FileSaver from 'file-saver';
 import './styles/App.css';
 import ColorBox from './components/Colorbox';
 import ButtonContainer from './components/ButtonContainer';
@@ -143,7 +143,7 @@ class App extends Component {
         html2canvas(document.getElementById('boxContainer'), {
             onrendered: (function(canvas) {
                 canvas.toBlob(function(blob) {
-                saveAs(blob, "Pixel Drawing.png");
+                FileSaver.saveAs(blob, "Pixel Drawing.png");
                 });
                 $('#boxContainer').css({
                     position: 'static',
