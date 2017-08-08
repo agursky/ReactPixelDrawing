@@ -1,6 +1,5 @@
 //Determine number of rows and columns in box container based on width and height of browser
 
-var saveData;
 
 if (window.innerWidth < 768) {
     var colQuant = Math.floor(window.innerWidth/36) - 1;
@@ -22,31 +21,16 @@ if (window.innerWidth < 768) {
 //Create Table
 
 var tableData = [];
+var cellCount = 0;
 
-var makeNewTable = function() {
-    var cellCount = 0;
-
-    for (var x = 0; x < rowQuant; x+=1) {
-        tableData.push([]);
-        for (var y = 0; y < colQuant; y+=1) {
-            tableData[x].push({color: 'white', id: cellCount});
-            cellCount+=1;
-        }
-    }  
+for (var x = 0; x < rowQuant; x+=1) {
+    tableData.push([]);
+    for (var y = 0; y < colQuant; y+=1) {
+        tableData[x].push({color: 'white', id: cellCount});
+        cellCount+=1;
+    }
 }
 
-makeNewTable();
-
-axios.get('./data/data.json', {
-          headers: {
-            'Content-Type': 'applicaton/json'
-          }
-          }).then(function(response) {
-    saveData = response.data;
-    console.log(saveData.length);
-    }).catch(function (error) {
-        console.log(error);
-      })
 
 //Create Color Pallette
 
@@ -92,13 +76,6 @@ var Modal = function(props) {
             <button className='confirm-button' onClick={props.confirmModal}>OK</button>
         </div>
     );
-}
-
-var SaveModal = function(props) {
-    return <div className='modal-container' style={props.style}>
-    <button className='cancel-button' onClick={props.removeModal}>Cancel</button>
-    <button className='confirm-button' onClick={props.confirmModal}>OK</button>
-    </div>;
 }
 
 var HelpWindow = function(props) {
@@ -189,7 +166,6 @@ var Application = React.createClass({
             currentColor: 'black',
             modalMessage: 'Are you sure you want to erase EVERYTHING?',
             modalStyle: {display: 'none'}, 
-            saveModalStyle: {display: 'none'},
             colorContainerStyle: {},
             helpStyle: {}, 
             addRemoveStyle: {}, 
@@ -257,34 +233,26 @@ var Application = React.createClass({
         
     },
     saveImage: function() {
-        saveData.push(this.state.drawingTable);
-        axios.post('./data/drawData.php', saveData)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-//        $('#boxContainer').css({
-//            position: 'absolute',
-//            top: 0,
-//            left: 0
-//        });
-//        html2canvas(document.getElementById('boxContainer'), {
-//            onrendered: (function(canvas) {
-//                canvas.toBlob(function(blob) {
-//                saveAs(blob, "Pixel Drawing.png");
-//                });
-//                {
-//                    $('#boxContainer').css({
-//                        position: 'static',
-//                        top: 'initial',
-//                        left: 'initial'
-//                    });
-//                };
-//                
-//            })
-//        });
+        $('#boxContainer').css({
+            position: 'absolute',
+            top: 0,
+            left: 0
+        });
+        html2canvas(document.getElementById('boxContainer'), {
+            onrendered: (function(canvas) {
+                canvas.toBlob(function(blob) {
+                saveAs(blob, "Pixel Drawing.png");
+                });
+                {
+                    $('#boxContainer').css({
+                        position: 'static',
+                        top: 'initial',
+                        left: 'initial'
+                    });
+                };
+                
+            })
+        });
     },
     showModal: function() {
         this.state.modalStyle = {display: 'initial'};
@@ -348,7 +316,6 @@ var Application = React.createClass({
                     </div>
                 </div>
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
-                <SaveModal style={this.state.saveModalStyle}/>
                 <AddRemoveWindow style={this.state.addRemoveStyle} addRemFunc={[this.addRow, this.addColumn, this.removeRow, this.removeColumn, function() {this.toggler('addRemoveStyle');}.bind(this)]}/>
                 <FAQContainer style={this.state.faqStyle} clickFunc = {function() {this.toggler('faqStyle');}.bind(this)}/>
 
@@ -357,8 +324,8 @@ var Application = React.createClass({
     }
 })
 
+
 ReactDOM.render(
   <Application tableData={tableData} colorArray={colorGrid}/>,
   document.getElementById('container')
 );
-
