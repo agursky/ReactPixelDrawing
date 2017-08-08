@@ -1,7 +1,9 @@
 {
-  "name": "my-app",
+  "name": "Pixel",
   "version": "0.1.0",
   "private": true,
+  "author": "Andrew Gursky",
+  "description": "A React based web application for making pixel drawings.",
   "dependencies": {
     "file-saver": "^1.3.3",
     "filesaver.js": "0.2",
