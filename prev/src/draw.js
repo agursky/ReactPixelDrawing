@@ -1,51 +1,58 @@
-//Determine number of rows and columns in box container based on width and height of browser
+    var initializeBoxSize = function() {
+        //Determine number of rows and columns in box container based on width and height of browser
 
 
-if (window.innerWidth < 768) {
-    var colQuant = Math.floor(window.innerWidth/36) - 1;
-    var rowQuant = Math.floor((window.innerHeight - 63)/36) - 1;
-    var colorContainerInit = 'none';
-} else {
-    var colQuant = Math.floor((window.innerWidth - 395)/28) - 1;
-    var rowQuant = Math.floor((window.innerHeight - 78)/28) - 1;
-    if (colQuant > 20) {
-        colQuant = 20;
+        if (window.innerWidth < 768) {
+            var colQuant = Math.floor(window.innerWidth/36) - 1;
+            var rowQuant = Math.floor((window.innerHeight - 63)/36) - 1;
+            var colorContainerInit = 'none';
+        } else {
+            var colQuant = Math.floor((window.innerWidth - 395)/28) - 1;
+            var rowQuant = Math.floor((window.innerHeight - 78)/28) - 1;
+            if (colQuant > 20) {
+                colQuant = 20;
+            }
+            if (rowQuant > 20) {
+                rowQuant = 20;
+            }
+            var colorContainerInit = 'block';
+        } 
+
+
+        //Create Table
+
+        var tableData = [];
+        var cellCount = 0;
+
+        for (var x = 0; x < rowQuant; x+=1) {
+            tableData.push([]);
+            for (var y = 0; y < colQuant; y+=1) {
+                tableData[x].push({color: 'white', id: cellCount});
+                cellCount+=1;
+            }
+        }
+
+
+        //Create Color Pallette
+
+        
+        var buttonInfo = [{imgSrc: 'img/addCol.png', alt: 'Add Column Button'}, {imgSrc: 'img/addRow.png', alt: 'Add Row Button'}, {imgSrc: 'img/remCol.png', alt: 'Remove Column Button'}, {imgSrc: 'img/remRow.png', alt: 'remove Row Button'}, {imgSrc: 'img/save.png', alt: 'Save Image Button'}];
+
+        return tableData;
     }
-    if (rowQuant > 20) {
-        rowQuant = 20;
-    }
-    var colorContainerInit = 'block';
-} 
-
-
-//Create Table
-
-var tableData = [];
-var cellCount = 0;
-
-for (var x = 0; x < rowQuant; x+=1) {
-    tableData.push([]);
-    for (var y = 0; y < colQuant; y+=1) {
-        tableData[x].push({color: 'white', id: cellCount});
-        cellCount+=1;
-    }
+    
+var initializeColorGrid = function() {
+    var colorGrid = [];
+    var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffebcc', '#ffd08f', '#ffba52', '#ffa114', '#d68100', '#fffce3', '#fff7b3', '#fff283', '#ffed53', '#ffe500', '#c6edc7', '#9ce09e', '#71c674', '#4caf50', '#2e9f33', '#bbd7ed', '#90c5ef', '#54abf0', '#2196f3', '#0382e8', '#d3b8d8', '#ba82c4', '#b452c4', '#9c27b0', '#85019b', '#ffd2da', '#ffb0be', '#ff9bad', '#ff7991', '#ff718a'];
+    for (var x = 0; x < colorGridChoices.length; x+=1) {
+            colorGrid.push({color: colorGridChoices[x], id: x});
+        }
+    
+    return colorGrid;
 }
-
-
-//Create Color Pallette
-
-var colorGrid = [];
-var colorGridChoices = ['white', '#b7b7b7', 'gray', '#545454','black', '#ffc3bf', '#ffa9a3', '#ff8b83', '#ff685c', '#ff3d00', '#ffebcc', '#ffd08f', '#ffba52', '#ffa114', '#d68100', '#fffce3', '#fff7b3', '#fff283', '#ffed53', '#ffe500', '#c6edc7', '#9ce09e', '#71c674', '#4caf50', '#2e9f33', '#bbd7ed', '#90c5ef', '#54abf0', '#2196f3', '#0382e8', '#d3b8d8', '#ba82c4', '#b452c4', '#9c27b0', '#85019b', '#ffd2da', '#ffb0be', '#ff9bad', '#ff7991', '#ff718a'];
-var buttonInfo = [{imgSrc: 'img/addCol.png', alt: 'Add Column Button'}, {imgSrc: 'img/addRow.png', alt: 'Add Row Button'}, {imgSrc: 'img/remCol.png', alt: 'Remove Column Button'}, {imgSrc: 'img/remRow.png', alt: 'remove Row Button'}, {imgSrc: 'img/save.png', alt: 'Save Image Button'}];
-            
-            
-            
-            
-            
-
-for (var x = 0; x < colorGridChoices.length; x+=1) {
-    colorGrid.push({color: colorGridChoices[x], id: x});
-}
+    
+var tableData = initializeBoxSize();
+var colorGrid = initializeColorGrid();
 
 //Initialize Components
 
