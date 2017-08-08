@@ -1,1 +1,0 @@
-This is a web based app created using ReactJS. It allows the user to create pixel drawings. 
