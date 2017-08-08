@@ -199,7 +199,7 @@ class App extends Component {
                         }.bind(this))}
                     </div>
                 </div> 
-                <ButtonContainer buttonFunc = {[function() {this.toggler('faqStyle')}.bind(this), function() {this.toggler('addRemoveStyle')}.bind(this), function() {this.removeColumn()}.bind(this), function() {this.removeRow()}.bind(this), function() {this.addColumn()}.bind(this), function() {this.addRow()}.bind(this), this.showModal, this.saveImage, function() {this.toggler('colorContainerStyle')}.bind(this)]}/>
+                <ButtonContainer buttonFunc = {[function() {this.toggler('faqStyle')}.bind(this), function() {this.toggler('addRemoveStyle')}.bind(this), function() {this.removeColumn()}.bind(this), function() {this.removeRow()}.bind(this), function() {this.addColumn()}.bind(this), function() {this.addRow()}.bind(this), function() {this.showModal()}.bind(this), this.saveImage, function() {this.toggler('colorContainerStyle')}.bind(this)]}/>
                 <div id = 'boxContainer'>
                     <div className='table-container'>
                             {this.state.drawingTable.map(function(item, index) {
@@ -208,7 +208,7 @@ class App extends Component {
                                     )}.bind(this))}
                     </div>
                 </div>
-                <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={this.removeModal} confirmModal={this.confirmModal}/>
+                <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={function() {this.removeModal()}.bind(this)} confirmModal={function() {this.confirmModal()}.bind(this)}/>
                 <AddRemoveWindow style={this.state.addRemoveStyle} addRemFunc={[this.addRow, this.addColumn, this.removeRow, this.removeColumn, function() {this.toggler('addRemoveStyle');}.bind(this)]}/>
                 <FAQContainer style={this.state.faqStyle} clickFunc = {function() {this.toggler('faqStyle');}.bind(this)}/>
 
