@@ -177,12 +177,6 @@ class App extends Component {
             $('#boxContainer').css('margin-left', (windowWidth - boxContainerWidth)/2 + 'px');
         }        
     }
-    showCheckBox() {
-        $('.resize-icon-container').remove();
-        $('#container').append("<div class='resize-icon-container'><div class='resize-icon'><img src='img/check.svg'/></div><span>+1 Row Added</span></div>");
-        
-        
-    }
     render() {
         return(
             <div>
