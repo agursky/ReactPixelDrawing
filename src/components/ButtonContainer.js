@@ -19,19 +19,58 @@ export default class ButtonContainer extends Component {
     hoverFunc(el) {
         this.setState({helperText: el});
     }
+    buttonSet = [{class: '',
+                  action:this.props.buttonFunc[0],
+                  hoverText: 'Help', 
+                  imgSrc: help,
+                  altText: 'Help Button'},
+                {class: 'mobile-button',
+                  action:this.props.buttonFunc[1],
+                  hoverText: 'Resize Grid', 
+                  imgSrc: addRemove,
+                  altText: 'Resize Grid Button'},
+                {class: 'desktop-button',
+                  action:this.props.buttonFunc[2],
+                  hoverText: 'Remove Column', 
+                  imgSrc: remCol,
+                  altText: 'Remove Column Button'},
+                {class: 'desktop-button',
+                  action:this.props.buttonFunc[3],
+                  hoverText: 'Remove Row', 
+                  imgSrc: remRow,
+                  altText: 'Remove Row Button'},
+                {class: 'desktop-button',
+                  action:this.props.buttonFunc[4],
+                  hoverText: 'Add Column', 
+                  imgSrc: addCol,
+                  altText: 'Add Column Button'},
+                {class: 'desktop-button',
+                  action:this.props.buttonFunc[5],
+                  hoverText: 'Add Row', 
+                  imgSrc: addRow,
+                  altText: 'Add Row Button'},
+                {class: '',
+                  action:this.props.buttonFunc[6],
+                  hoverText: 'Start Over', 
+                  imgSrc: clear,
+                  altText: 'Clear Button'},
+                {class: '',
+                  action:this.props.buttonFunc[7],
+                  hoverText: 'Save', 
+                  imgSrc: save,
+                  altText: 'Save Button'},
+                {class: 'mobile-button',
+                  action:this.props.buttonFunc[8],
+                  hoverText: 'Choose a Color', 
+                  imgSrc: mobColor,
+                  altText: 'Open Color Menu Button'}]
     render() {
         return(
             <div className = 'buttonContainer'>
-                    <button type='button' onClick={this.props.buttonFunc[0]} onMouseOver={function() {this.hoverFunc('Help')}.bind(this)}><img src={help} alt='Help Button'/></button> 
-                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[1]} onMouseOver={function() {this.hoverFunc('Resize Grid')}.bind(this)}><img src={addRemove} alt='Resize Grid Button'/></button>
-                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[2]} onMouseOver={function() {this.hoverFunc('Remove Column')}.bind(this)}><img src={remCol} alt='Remove Column Button'/></button> 
-                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[3]} onMouseOver={function() {this.hoverFunc('Remove Row')}.bind(this)}><img src={remRow} alt='Remove Row Button'/></button>
-                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[4]} onMouseOver={function() {this.hoverFunc('Add Column')}.bind(this)}><img src={addCol} alt='Add Column Button'/></button>
-                    <button type='button' className='desktop-button' onClick={this.props.buttonFunc[5]} onMouseOver={function() {this.hoverFunc('Add Row')}.bind(this)}><img src={addRow} alt='Add Row Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[6]} onMouseOver={function() {this.hoverFunc('Start Over')}.bind(this)}><img src={clear} alt='Clear Button'/></button>
-                    <button type='button' onClick={this.props.buttonFunc[7]} onMouseOver={function() {this.hoverFunc('Save')}.bind(this)}><img src={save} alt='Save Button'/></button>
-                    <button type='button' className='mobile-button' onClick={this.props.buttonFunc[8]} onMouseOver={function() {this.hoverFunc('Choose a Color')}.bind(this)}><img src={mobColor} alt='Open Color Menu Button'/></button>
-                    <span className='helper-span'>{this.state.helperText}</span>
+                    {this.buttonSet.map(function(item, index) {
+                        function hoverFunc(el) {};
+                        return <button type='button' className={item.class} key={index} onClick={item.action} onMouseOver={function() {hoverFunc(item.hoverText)}}><img src={item.imgSrc} alt={item.altText}/></button>
+                        })}
                 </div>
         )
     }
