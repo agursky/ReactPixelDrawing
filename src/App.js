@@ -170,6 +170,7 @@ class App extends Component {
         }
         this.setState({[el]: {display: togPal}});
     }
+    buttonFunctionSet = [function() {this.toggler('faqStyle')}.bind(this), function() {this.toggler('addRemoveStyle')}.bind(this), function() {this.removeColumn()}.bind(this), function() {this.removeRow()}.bind(this), function() {this.addColumn()}.bind(this), function() {this.addRow()}.bind(this), function() {this.showModal()}.bind(this), function() {this.saveImage()}.bind(this), function() {this.toggler('colorContainerStyle')}.bind(this)]
     componentDidMount() {
         if (window.innerWidth < 768) {
             var windowWidth = $(window).width();
@@ -193,7 +194,7 @@ class App extends Component {
                         }.bind(this))}
                     </div>
                 </div> 
-                <ButtonContainer buttonFunc = {[function() {this.toggler('faqStyle')}.bind(this), function() {this.toggler('addRemoveStyle')}.bind(this), function() {this.removeColumn()}.bind(this), function() {this.removeRow()}.bind(this), function() {this.addColumn()}.bind(this), function() {this.addRow()}.bind(this), function() {this.showModal()}.bind(this), function() {this.saveImage()}.bind(this), function() {this.toggler('colorContainerStyle')}.bind(this)]}/>
+                <ButtonContainer buttonFunc = {this.buttonFunctionSet}/>
                 <div id = 'boxContainer'>
                     <div className='table-container'>
                             {this.state.drawingTable.map(function(item, index) {
@@ -203,7 +204,7 @@ class App extends Component {
                     </div>
                 </div>
                 <Modal modalMessage={this.state.modalMessage} style={this.state.modalStyle} removeModal={function() {this.removeModal()}.bind(this)} confirmModal={function() {this.confirmModal()}.bind(this)}/>
-                <AddRemoveWindow style={this.state.addRemoveStyle} addRemFunc={[this.addRow, this.addColumn, this.removeRow, this.removeColumn, function() {this.toggler('addRemoveStyle');}.bind(this)]}/>
+                <AddRemoveWindow style={this.state.addRemoveStyle} addRemFunc={this.buttonFunctionSet}/>
                 <FAQContainer style={this.state.faqStyle} clickFunc = {function() {this.toggler('faqStyle');}.bind(this)}/>
 
             </div>

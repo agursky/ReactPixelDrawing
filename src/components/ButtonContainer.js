@@ -68,9 +68,9 @@ export default class ButtonContainer extends Component {
         return(
             <div className = 'buttonContainer'>
                     {this.buttonSet.map(function(item, index) {
-                        function hoverFunc(el) {};
-                        return <button type='button' className={item.class} key={index} onClick={item.action} onMouseOver={function() {hoverFunc(item.hoverText)}}><img src={item.imgSrc} alt={item.altText}/></button>
-                        })}
+                        return <button type='button' className={item.class} key={index} onClick={item.action} onMouseOver={function() {this.hoverFunc(item.hoverText)}.bind(this)}><img src={item.imgSrc} alt={item.altText}/></button>
+                        }.bind(this))}
+                    <span className='helper-span'>{this.state.helperText}</span>
                 </div>
         )
     }
