@@ -170,7 +170,7 @@ class App extends Component {
         }
         this.setState({[el]: {display: togPal}});
     }
-    buttonFunctionSet = [function() {this.toggler('faqStyle')}.bind(this), function() {this.toggler('addRemoveStyle')}.bind(this), function() {this.removeColumn()}.bind(this), function() {this.removeRow()}.bind(this), function() {this.addColumn()}.bind(this), function() {this.addRow()}.bind(this), function() {this.showModal()}.bind(this), function() {this.saveImage()}.bind(this), function() {this.toggler('colorContainerStyle')}.bind(this)]
+    buttonFunctionSet = [function() {this.toggler('faqStyle')}.bind(this), function() {this.toggler('addRemoveStyle')}.bind(this), function() {this.removeColumn()}.bind(this), function() {this.removeRow()}.bind(this), function() {this.addColumn()}.bind(this), function() {this.addRow()}.bind(this), function() {this.showModal()}.bind(this), function() {this.saveImage()}.bind(this), function() {this.toggler('colorContainerStyle')}.bind(this), function() {this.toggler('addRemoveStyle')}.bind(this)]
     componentDidMount() {
         if (window.innerWidth < 768) {
             var windowWidth = $(window).width();

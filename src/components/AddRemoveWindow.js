@@ -15,7 +15,7 @@ export default function AddRemoveWindow(props) {
             <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[3]}><img src={remRow} alt='Remove Row'/></button><span>Remove<br/>  Row</span></div>
             <div className='add-remove-container'><button type='button' onClick={props.addRemFunc[2]}><img src={remCol} alt='Remove Column'/></button><span>Remove<br/>  Column</span></div>
         </div>
-        <button type='button' className='confirm-button' onClick={props.addRemFunc[4]}>Done</button>
+        <button type='button' className='confirm-button' onClick={props.addRemFunc[9]}>Done</button>
         </div>
     )
 }
