@@ -1,8 +1,7 @@
 /******General*************************************************************************/
 
 * {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     color: #575757;
     font-family: 'Open Sans', sans-serif !important;
 }
@@ -18,8 +17,7 @@ body {
 }
 
 #boxContainer, .colorContainer, .buttonContainer, .add-remove {
-    -webkit-box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
-            box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
 }
 
 #boxContainer, .colorContainer {
@@ -35,18 +33,14 @@ body {
     position: fixed;
     left: 50%;
     top: 20%;
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .abs-center {
     position: fixed;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 
@@ -100,7 +94,6 @@ button {
     border: none;
     outline: none;
     -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
     transition: 0.4s;
     background-color: transparent;
     
@@ -146,7 +139,6 @@ button img {
     font-size: 14px;
     opacity: 0;
     -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
     transition: 0.4s;
 }
 
@@ -189,7 +181,6 @@ button.outerBox {
     background-color: white;
     position: relative;
     cursor: pointer;
-    
 }
 
 button.outerBox:hover {
@@ -214,8 +205,7 @@ button.outerBox:hover {
     top: 30%;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(-50%);
-            -ms-transform: translateX(-50%) translateY(-50%);
-        transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
     background-color: white;
     padding: 40px 40px 20px;
     border: 1px solid #cecece;
@@ -273,9 +263,7 @@ button.outerBox:hover {
 .resize-icon-container {
     z-index: 10;
     position: fixed;
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 105px;
     height: 105px;
     border: 1px solid;
@@ -287,17 +275,13 @@ button.outerBox:hover {
     position: fixed;
     top: 0;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     background-color: #51d451;
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    -webkit-animation-name: checkBoxEnter;
-            animation-name: checkBoxEnter;
-    -webkit-animation-duration: 1.6s;
-            animation-duration: 1.6s;
+    animation-name: checkBoxEnter;
+    animation-duration: 1.6s;
     border: 1px solid transparent;
 
 /*    opacity: 0;*/
@@ -318,14 +302,6 @@ button.outerBox:hover {
     left: 50%;
     transform: translate(-50%);
 */
-}
-
-@-webkit-keyframes checkBoxEnter {
-    0% {top: 0; opacity: 0; border: 85px solid #51d451;}
-    50% {top: 0; opacity: .5; border: 20px solid #51d451;}
-    75% {top: 0; opacity: 1; border: 5px solid #51d451;}
-    100% {top: 0; opacity: 0; border: 1px solid #51d451;}
-
 }
 
 @keyframes checkBoxEnter {
@@ -523,8 +499,7 @@ button.outerBox:hover {
         width: 256px;
         height: auto;
         -webkit-transform: none;
-                -ms-transform: none;
-            transform: none;
+                transform: none;
         border-top: 1px solid;
         border-left: 1px solid;
     }
@@ -534,7 +509,6 @@ button.outerBox:hover {
         width: auto;
         border-bottom: 1px solid;
         border-right: 1px solid;
-        margin: 0;
         
 
     }
