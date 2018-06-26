@@ -140,8 +140,7 @@ class App extends Component {
             top: 0,
             left: 0
         });
-        html2canvas(document.getElementById('boxContainer'), {
-            onrendered: (function(canvas) {
+        html2canvas(document.getElementById('boxContainer')).then(function(canvas) {
                 canvas.toBlob(function(blob) {
                 FileSaver.saveAs(blob, "Pixel Drawing.png");
                 });
@@ -151,8 +150,8 @@ class App extends Component {
                     left: 'initial'
                 });                
             })
-        });
     }
+
     showModal() {
         this.setState({modalStyle: {display: 'initial'}});
     }
